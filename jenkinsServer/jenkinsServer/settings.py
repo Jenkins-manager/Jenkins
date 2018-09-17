@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    #custom apps here
+    'statement'
 ]
 
 MIDDLEWARE = [
@@ -78,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jenkinsDev',
         'USER': 'jackbranch', # set this to your postgres username
-        'PASSWORD': '',
+        'PASSWORD': 'qweasd',
         'HOST': 'localhost',
         'PORT': '5432'
     }
