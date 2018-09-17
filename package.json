@@ -1,0 +1,22 @@
+{
+  "name": "permanbackend",
+  "version": "1.0.0",
+  "description": "Personal Manager",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "Python manage.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jenkins-manager/Jenkins-BackEnd.git"
+  },
+  "author": "Jenkins-manager",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jenkins-manager/Jenkins-BackEnd/issues"
+  },
+  "homepage": "https://github.com/Jenkins-manager/Jenkins-BackEnd#readme"
+}
