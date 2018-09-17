@@ -26,4 +26,5 @@ python manage.py runserver
 
 Team members: [Marcus Kerr](https://github.com/MarcusKerr), [Jack Branch](https://github.com/pliantmeerkat), [Daniel den Hartog](https://github.com/velvetsnowman), [Kirtiman Singh](https://github.com/kirtimansingh93), [Cui Li Lim](https://github.com/limcuili)  
 
-[Trello board](https://trello.com/b/jnnwcT3C/jenkins)
+[Trello board](https://trello.com/b/jnnwcT3C/jenkins).
+
