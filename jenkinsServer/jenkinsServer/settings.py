@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     #custom apps here
-    'statement'
+    'questions'
 ]
 
 MIDDLEWARE = [
@@ -72,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jenkinsServer.wsgi.application'
 
-
+CSRF_COOKIE_SECURE = True
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jenkinsDev',
-        'USER': 'jackbranch', # set this to your postgres username
-        'PASSWORD': 'qweasd',
+        'USER': 'danieldenhartog', # set this to your postgres username
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432'
     }

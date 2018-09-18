@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from questions.views import get_questions
 from . import views
+
+# from questions.views import get_questions
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('', views.index, name='index'),
+    url('get_questions/', get_questions)
 ]
