@@ -15,7 +15,6 @@ def get_questions(request):
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data)
 
-
 @api_view(['post'])
 def send_question(request):
     if request.data['body'] != '':
