@@ -14,3 +14,12 @@ def get_questions(request):
     questions = Question.objects.all()
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data)
+
+
+@api_view(['post'])
+def send_question(request):
+    q1 = Question(
+        body = request.data['body']
+    )
+    q1.save()
+    return Response({'message': 'new data', 'data': request.data})
