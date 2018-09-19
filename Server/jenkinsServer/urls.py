@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from Server.jenkinsServer.views import index
 from questions.views import get_questions, send_question
-from jenkinsServer.views import index
 from . import views
 
 # from questions.views import get_questions
