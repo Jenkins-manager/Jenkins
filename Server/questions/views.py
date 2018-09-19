@@ -19,4 +19,4 @@ def get_questions(request):
 def send_question(request):
     q1 = Question(body=request.data['body'])
     q1.save()
-    return Response({'message': 'new data', 'data': request.data}) if RequestProcessor.check_request(request.data) == True  else Response(status=500, data='Empty Question')
+    return Response({'message': 'new data', 'data': request.data}) if RequestProcessor.check_request(request.data, Question) == True  else Response(status=500, data='Empty Question')
