@@ -1,0 +1,25 @@
+<textarea id="textQ"></textarea>
+<button onClick={sendQuestion()}>Send</button>
+
+<script>
+    function sendQuestion() {
+        fetch('/send_question/',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                    body: document.getElementById('textQ').value,
+                }),
+        }).then(function(result) {
+            if(!result.ok) {
+                throw Error('Bad data input')
+            }
+        }).then(function(result){
+            console.log(result)
+        }).catch(function(error) {
+            alert(error)
+        })
+    }
+</script>
