@@ -30,7 +30,7 @@ export default class App extends React.Component {
         }).catch(function(error) {
             alert(error)
       })
-  }
+  } 
 
   render() {
     return (
