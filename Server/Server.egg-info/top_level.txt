@@ -1,3 +1,0 @@
-jenkinsServer
-model
-questions
