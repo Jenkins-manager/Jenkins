@@ -1,5 +1,5 @@
 import pytest
-from Server.model.request_processor import RequestProcessor
+from ..model.request_processor import RequestProcessor
 
 class StubQuestion:
 
