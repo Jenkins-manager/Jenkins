@@ -6,6 +6,7 @@
 - Django
 - Pip
 - Pytest
+- React Native
 
 ```
 git clone https://github.com/Jenkins-manager/Jenkins.git
@@ -14,19 +15,36 @@ git clone https://github.com/Jenkins-manager/Jenkins.git
 ```
 cd Jenkins
 ```
+```
+npm install
+npm install -g react-native-cli
+```
+```
+sudo pip install django
+```
 
 ```
-sudo pip install django djangorestframework
+sudo pip install django django_rest_framework
+```
+```
 ```
 * to start server
 
 ```
-cd jenkinsServer
+cd Server
 ```
 
 ```
 python manage.py runserver
 ```
+* to view front end react on ios
+```
+ensure x-code is installed
+```
+```
+react-native run-ios
+```
+* when mock iphone appears, open evgie app
 
 
 *This is our 2-week final project for Makers; 17 Sept 2018 - 28 Sept 2018*  
