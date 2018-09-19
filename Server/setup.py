@@ -1,5 +1,4 @@
 import setuptools
-
 setuptools.setup(
     name="Jserver",
     version="0.0.1",
