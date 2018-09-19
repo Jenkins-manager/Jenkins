@@ -7,7 +7,7 @@ from .models import Question
 from rest_framework.decorators import api_view
 from .serializers import QuestionSerializer
 from rest_framework.response import Response
-from Server.model.request_processor import RequestProcessor
+from model.request_processor import RequestProcessor
 # Create your views here.
 @api_view(['get'])
 def get_questions(request):
