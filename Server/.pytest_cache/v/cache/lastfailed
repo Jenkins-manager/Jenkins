@@ -1,0 +1,4 @@
+{
+  "tests/1_test.py::test_answer": true, 
+  "tests/test_request_processor.py::TestClass": true
+}
