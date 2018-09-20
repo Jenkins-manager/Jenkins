@@ -11,6 +11,9 @@ script:
 script:
   - cd Server
   - python manage.py migrate
+script:
+  - cd ..
   - python add_database_data.py
   - python -m pytest tests
+script:
   - pylint Server.py
