@@ -12,8 +12,9 @@ script:
   - cd Server
   - python manage.py migrate
 script:
-  - cd ..
+  - export DJANGO_SETTINGS_MODULE=jenkinsServer.settings
   - python add_database_data.py
   - python -m pytest tests
 script:
+  - cd ..
   - pylint Server.py
