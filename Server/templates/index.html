@@ -1,5 +1,6 @@
 <textarea id="textQ"></textarea>
 <button onClick={sendQuestion()}>Send</button>
+<label id='answer'></label>
 
 <script>
     function sendQuestion() {
@@ -14,12 +15,12 @@
                 }),
         }).then(function(result) {
             if(!result.ok) {
+                console.log(result)
                 throw Error('Bad data input')
             }
-        }).then(function(result){
-            console.log(result)
         }).catch(function(error) {
             alert(error)
         })
+
     }
 </script>

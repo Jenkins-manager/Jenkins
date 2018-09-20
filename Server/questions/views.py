@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.shortcuts import render
 from .models import Question
-# from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from .serializers import QuestionSerializer
 from rest_framework.response import Response
@@ -15,6 +12,6 @@ def get_questions(request):
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data)
 
-@api_view(['post'])
+@api_view(['POST', 'GET'])
 def send_question(request):
-    return Response({'message': 'new data', 'data': request.data}) if RequestProcessor.check_request(request.data, Question) == True  else Response(status=500, data='Empty Question')
+    return Response({'body' : {'message': 'hello'}}) if RequestProcessor.check_request(request.data, Question) == True  else Response(status=500, data='Empty Question')
