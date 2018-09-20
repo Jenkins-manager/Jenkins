@@ -1,4 +1,6 @@
 [
+  "tests/test_answer_processor.py::TestClass::()::test_getTime", 
+  "tests/test_answer_processor.py::TestClass::()::test_getDate", 
   "tests/test_request_processor.py::TestClass::()::test_get_questions", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_no_throw_with_vaid_input", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_returns_correct_address", 
