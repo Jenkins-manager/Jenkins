@@ -1,5 +1,5 @@
 # config file for travis
-language: python 3
+language: python
 
 before-install:
   - pip install psycopg2-binary
