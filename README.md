@@ -1,4 +1,5 @@
 # Jenkins
+[![Build Status](https://travis-ci.org/Jenkins-manager/Jenkins.svg?branch=master)](https://travis-ci.org/Jenkins-manager/Jenkins)
 
 ## Dependencies
 
