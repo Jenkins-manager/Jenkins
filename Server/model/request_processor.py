@@ -9,7 +9,15 @@ class RequestProcessor:
         else:
             try:
                 question = question_class.objects.get(body=request['body'])
-                return True, question.id
+                return True, question.address
             except Exception, e:
                 print(str(e))
                 return False
+    @staticmethod
+    def process_request(question_address):
+        print(question_address)
+        return 0
+        
+    @staticmethod
+    def send_answer():
+        return 0

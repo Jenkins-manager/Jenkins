@@ -17,5 +17,9 @@ def get_questions(request):
 
 @api_view(['post'])
 def send_question(request):
-    print(RequestProcessor.check_request(request.data, Question))
-    return Response({'message': 'new data', 'data': request.data}) if RequestProcessor.check_request(request.data, Question)[0] == True  else Response(status=500, data='Empty Question')
+    request_data = RequestProcessor.check_request(request.data, Question)
+    try:
+        RequestProcessor.process_request(request_data[1])
+        return Response({'message': 'new data', 'data': request.data})
+    except:
+        return Response(status=500, data='Empty Question')
