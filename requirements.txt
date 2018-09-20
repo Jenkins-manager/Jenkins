@@ -1,4 +1,5 @@
-pyscopg2
+psycopg2
 django
 pylint
 django-rest-framework
+# tensorflow
