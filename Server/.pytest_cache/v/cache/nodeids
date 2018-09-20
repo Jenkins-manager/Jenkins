@@ -1,6 +1,9 @@
 [
+  "tests/test_request_processor.py::TestClass::()::test_get_questions", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_no_throw_with_vaid_input", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_returns_correct_address", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_no_input", 
-  "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_invalid_question"
+  "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_invalid_question", 
+  "tests/test_request_processor.py::TestClass::()::test_process_request", 
+  "tests/test_request_processor.py::TestClass::()::test_get_answer"
 ]

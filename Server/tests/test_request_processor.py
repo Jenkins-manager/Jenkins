@@ -2,9 +2,14 @@ import pytest
 import django
 django.setup()
 from questions.models import Question
+from questions.serializers import QuestionSerializer
+from answers.models import Answer
 from ..model.request_processor import RequestProcessor
 
 class TestClass(object):
+
+    def test_get_questions(self):
+        assert RequestProcessor.get_questions(QuestionSerializer, Question).data[0]['body'] == 'What time is it?'
 
     # check_request tests
 
@@ -19,3 +24,9 @@ class TestClass(object):
 
     def test_check_request_throws_with_invalid_question(self):
         assert RequestProcessor.check_request({'body': 'fake question'}, Question) == False 
+
+    def test_process_request(self):
+        assert True
+    
+    def test_get_answer(self):
+        assert RequestProcessor.get_answer(1, Answer).body == 'getName()'

@@ -11,8 +11,7 @@ from model.request_processor import RequestProcessor
 # Create your views here.
 @api_view(['get'])
 def get_questions(request):
-    questions = Question.objects.all()
-    serializer = QuestionSerializer(questions, many=True)
+    serializer = RequestProcessor.get_questions(QuestionSerializer, Question)
     return Response(serializer.data)
 
 @api_view(['post'])
