@@ -16,7 +16,7 @@ class RequestProcessor:
             except Exception, e:
                 print(str(e))
                 return False
-                
+
     @staticmethod
     def process_request(question_address):
         print(question_address)
@@ -25,4 +25,5 @@ class RequestProcessor:
     @staticmethod
     def get_answer(answer_address, answer_class):
         answer = answer_class.objects.get(address = answer_address)
+
         return answer
