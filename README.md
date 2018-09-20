@@ -8,6 +8,12 @@
 - Pytest
 - React Native
 
+## Installation
+
+### Development
+
+If you wish to contribute to this project, in addition to the requirements listed above you will need to follow the steps listed below.
+    - export DJANGO_SETTINGS_MODULE=jenkinsServer.settings (this adds the settings to your path)
 ```
 git clone https://github.com/Jenkins-manager/Jenkins.git
 ```
