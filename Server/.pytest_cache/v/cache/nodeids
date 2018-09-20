@@ -1,4 +1,5 @@
 [
   "tests/test_request_processor.py::TestClass::()::test_check_request_no_throw_with_vaid_input", 
-  "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_no_input"
+  "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_no_input", 
+  "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_invalid_question"
 ]

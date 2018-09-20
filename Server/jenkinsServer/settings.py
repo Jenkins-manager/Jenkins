@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     #custom apps here
     'questions',
     'answers',
-    'command_word'
 ]
 
 MIDDLEWARE = [
