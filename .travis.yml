@@ -1,12 +1,15 @@
+# config file for travis
 language: python
-
-before-install:
-  - pip install psycopg2-binary
-  - pip install pylint
-  - psql -c 'create database jenkinsDev;' -U postgres
-scripts:
+python:
+  - "2.7"
+  - "3.6"
+# command to install dependencies
+script:
+  - pip install -r requirements.txt
   - cd Server
-  - python manage.py migrate
-  - python add_database_data.py
+  - psql -c 'create database jenkinsDev;' -U postgres
+  - export DJANGO_SETTINGS_MODULE=jenkinsServer.settings
+  # - python add_database_data.py
   - python -m pytest tests
-  - pylint Server.py
+  - cd ..
+  - pylint Server
