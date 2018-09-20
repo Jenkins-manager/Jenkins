@@ -1,7 +1,7 @@
 import django
 django.setup()
 from questions.models import Question
-from answers.models import Answer
+# from answers.models import Answer
 
 def set_questions():
     return [{'body': 'What time is it?', 'address': 1},
@@ -24,16 +24,16 @@ def add_questions():
         q1.save()
 
 
-def add_answers():
-    for i in range(len(set_answers())):
-        a1 = Answer(
-            body=set_answers()[i]['body'],
-            address=set_answers()[i]['address']
-            )
-        a1.save()
+# def add_answers():
+#     for i in range(len(set_answers())):
+#         a1 = Answer(
+#             body=set_answers()[i]['body'],
+#             address=set_answers()[i]['address']
+#             )
+#         a1.save()
 
 def add_data():
     add_questions()
-    add_answers()
+    # add_answers()
 
 add_data()
