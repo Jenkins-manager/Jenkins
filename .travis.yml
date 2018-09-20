@@ -8,7 +8,7 @@ script:
   - pip install -r requirements.txt
 script:
   - psql -c 'create database jenkinsDev;' -U postgres
-scripts:
+script:
   - cd Server
   - python manage.py migrate
   - python add_database_data.py
