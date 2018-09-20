@@ -1,0 +1,4 @@
+pyscopg2
+django
+pylint
+django-rest-framework
