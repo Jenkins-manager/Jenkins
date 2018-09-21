@@ -1,3 +1,6 @@
+"""
+    Main file used to run the server
+"""
 #!/usr/bin/env python
 import os
 import sys
