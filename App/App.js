@@ -7,7 +7,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      text: '' 
+      text: '',
+      answer: 'The answer goes here'
     };
   }
   
@@ -38,6 +39,7 @@ export default class App extends React.Component {
         <Text style={styles.title}>Jenkins</Text>
         {/* <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text> */}
+        <Text>{this.state.answer}</Text>
         <TextInput 
           style={{height: 40, width:300,  borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({text})}
