@@ -31,6 +31,7 @@ export default class App extends React.Component {
         }).catch(function(error) {
             alert(error)
       })
+      this.setState({ text: '' })
   } 
 
   render() {
@@ -47,7 +48,7 @@ export default class App extends React.Component {
         />
         <Button 
         onPress={() => this.sendQuestion()}
-        title='Send' />
+        title='Send'/>
       </View>
     );
   }
