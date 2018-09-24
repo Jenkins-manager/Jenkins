@@ -1,5 +1,4 @@
 {
   "tests/1_test.py::test_answer": true, 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_de_normalize": true, 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_normalize": true
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output": true
 }

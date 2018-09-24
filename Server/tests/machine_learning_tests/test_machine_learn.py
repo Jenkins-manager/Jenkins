@@ -7,7 +7,7 @@ from ...model.machine_learning.machine_learn import MachineLearn
 class TestClass(object):
 
     machine_learn = MachineLearn()
-    question_address = 1
+    question_address = 2
     normalized_question = machine_learn.normalize(question_address)
 
     def test_normalize(self):
@@ -20,4 +20,4 @@ class TestClass(object):
         assert True
 
     def test_get_output(self):
-        assert True
+        assert TestClass.machine_learn.get_output(TestClass.question_address) == 3
