@@ -24,9 +24,6 @@ class TestClass(object):
 
     def test_check_request_throws_with_invalid_question(self):
         assert RequestProcessor.check_request({'body': 'fake question'}, Question) == False 
-
-    def test_process_request(self):
-        assert True
     
     def test_get_answer(self):
         assert RequestProcessor.get_answer(1, Answer).body == 'getName()'
