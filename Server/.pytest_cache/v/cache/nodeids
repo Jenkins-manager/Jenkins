@@ -10,7 +10,5 @@
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_normalize", 
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_de_normalize", 
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_train_network", 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output", 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_verify_output_good", 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_verify_output_bad"
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output"
 ]

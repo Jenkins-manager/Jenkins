@@ -7,23 +7,17 @@ from ...model.machine_learning.machine_learn import MachineLearn
 class TestClass(object):
 
     machine_learn = MachineLearn()
+    question_address = 1
+    normalized_question = machine_learn.normalize(question_address)
 
     def test_normalize(self):
-        assert True
+        assert(0 < TestClass.machine_learn.normalize(TestClass.question_address) < 1)
     
     def test_de_normalize(self):
-        assert True
+        assert TestClass.machine_learn.de_normalize(TestClass.normalized_question) == TestClass.question_address
 
     def test_train_network(self):
         assert True
 
     def test_get_output(self):
         assert True
-
-    # verify output tests
-
-    def test_verify_output_good(self):
-        assert TestClass.machine_learn.verify_output(2)
-
-    def test_verify_output_bad(self):
-        assert TestClass.machine_learn.verify_output(0.0012938) == False
