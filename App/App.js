@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { AppRegistry, TextInput } from 'react-native';
-import { Button } from 'react-native';
+// import { AppRegistry, TextInput } from 'react-native';
+// import { Button } from 'react-native';
+import InputAndSend from './InputAndSend';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -36,16 +37,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Jenkins</Text>
-        {/* <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text> */}
-        <TextInput 
-          style={{height: 40, width:300,  borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => this.setState({text})}
-          value = {this.state.text}
-        />
-        <Button 
-        onPress={() => this.sendQuestion()}
-        title='Send' />
+        <InputAndSend />
       </View>
     );
   }
@@ -54,13 +46,17 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10,
   },
   title: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 35,
+    margin: 25,
+  },
+  input: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 10
   }
 });
