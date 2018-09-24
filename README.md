@@ -27,13 +27,7 @@ npm install
 npm install -g react-native-cli
 ```
 ```
-sudo pip install django
-```
-
-```
-sudo pip install django django_rest_framework
-```
-```
+sudo pip install -r requirements.txt
 ```
 * to start server
 
