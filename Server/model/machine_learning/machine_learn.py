@@ -20,6 +20,6 @@ class MachineLearn:
         print("output")
     
     def verify_output(self, output):
-        print("verified")
+        return True if output >= 1 else False
     
     # run?
