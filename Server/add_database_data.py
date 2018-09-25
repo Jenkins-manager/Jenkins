@@ -11,7 +11,7 @@ def set_questions():
 
 def set_answers():
     return [{'body': 'AnswerProcessor.getName()', 'address': 1},
-            {'body': 'AnswerProcessor.getweather()', 'address': 2},
+            {'body': 'AnswerProcessor.getWeather()', 'address': 2},
             {'body': "AnswerProcessor.getDate()", 'address': 3},
             {'body': "AnswerProcessor.getTime()", 'address': 4}]
 

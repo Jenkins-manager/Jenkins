@@ -1,5 +1,6 @@
 from time import gmtime, strftime
 from .answer_processor import AnswerProcessor
+from .machine_learning.machine_learn import MachineLearn
 
 class RequestProcessor:
 
@@ -21,14 +22,15 @@ class RequestProcessor:
                 return False
 
     @staticmethod
-    def process_request(question_address):
-
-        return 0
+    def process_request(question_address, answer_class):
+        machine_learn = MachineLearn()
+        answer = machine_learn.get_output(question_address)
+        return RequestProcessor.get_answer(answer, answer_class)
 
     @staticmethod
     def get_answer(answer_address, answer_class):
         answer = answer_class.objects.get(address = answer_address)
-        return answer
+        return eval(answer.body)
 
     @staticmethod
     def convert_answer(answer_string):

@@ -27,4 +27,4 @@ class TestClass(object):
     # full cycle tests
 
     def test_program_can_receive_question_and_pick_answer_correctly(self):     
-        assert RequestProcessor.process_request(1) == strftime("%H:%M:%S", gmtime())
+        assert RequestProcessor.process_request(100, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
