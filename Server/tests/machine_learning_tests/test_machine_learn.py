@@ -18,7 +18,7 @@ class TestClass(object):
 
     def test_train_network(self):
         TestClass.machine_learn.train_network([1.00, 2.00, 3.00, 4.00])
-        assert True #== False
+        assert True == False
 
     def test_get_output(self):
         assert True # TestClass.machine_learn.get_output(TestClass.question_address) == 3
