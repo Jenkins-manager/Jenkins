@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #custom apps here
     'questions',
     'answers',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -81,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jenkinsDev',
-        'USER': 'jackbranch', # set this to your postgres username
-        'PASSWORD': 'qweasd',
+        'USER': 'danieldenhartog', # set this to your postgres username
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432'
     }
