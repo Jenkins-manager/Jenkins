@@ -3,8 +3,6 @@
 """
 import pytest
 from ...model.machine_learning.machine_learn import MachineLearn
-import tensorflow as tf
-tf.enable_eager_execution()
 
 class TestClass(object):
 

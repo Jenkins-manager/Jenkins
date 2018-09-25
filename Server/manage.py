@@ -3,10 +3,7 @@ import os
 import sys
 import tensorflow as tf
 
-
-
 if __name__ == "__main__":
-    tf.enable_eager_execution()
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jenkinsServer.settings")
     try:
         from django.core.management import execute_from_command_line
