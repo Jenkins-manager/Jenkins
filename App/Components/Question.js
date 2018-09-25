@@ -6,8 +6,8 @@ class Question extends Component {
   render() {
     return(
       <View style={styles.questionBox}>
-        {/* <Text>{this.props.question.text}</Text> */}
-        <Text style={styles.questionText}>This is a question</Text>
+        <Text style={styles.questionText}>{this.props.question.text}</Text>
+        {/* <Text style={styles.questionText}>100</Text> */}
       </View>
     );
   }

@@ -7,14 +7,14 @@ class InputAndSend extends Component {
   render() {
     return (
       <View style={styles.inputAndSendContainer}>
-          <TextInput
-            style={styles.input}
-          />
-          <Button
-            title='Send'
-            onPress={() => this.sendQuestion()}
-          />
-        </View>
+        <TextInput
+          style={styles.input}
+        />
+        <Button
+          title='Send'
+          onPress={() => this.sQ()}
+        />
+      </View>
     )
   }
 }
