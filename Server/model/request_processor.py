@@ -1,3 +1,5 @@
+from time import gmtime, strftime
+
 class RequestProcessor:
 
     @staticmethod
@@ -29,4 +31,5 @@ class RequestProcessor:
 
     @staticmethod
     def convert_answer(answer_string):
+        print eval(answer_string)
         return eval(answer_string)
