@@ -25,7 +25,7 @@ class TestClass(object):
         assert RequestProcessor.check_request({'body': 'fake question'}, Question) == False 
     
     def test_get_answer(self):
-        assert RequestProcessor.get_answer(1, Answer).body == 'getName()'
+        assert RequestProcessor.get_answer(1, Answer).body == 'AnswerProcessor.getName()'
 
     def test_convert_answer_current_time(self):
         assert RequestProcessor.convert_answer("strftime(\"%H:%M:%S\", gmtime())") == strftime("%H:%M:%S", gmtime())

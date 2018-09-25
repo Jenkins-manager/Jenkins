@@ -10,10 +10,10 @@ def set_questions():
             {'body': 'What is my name?', 'address': 4}]
 
 def set_answers():
-    return [{'body': 'getName()', 'address': 1},
-            {'body': 'getWeather()', 'address': 2},
-            {'body': 'getDate()', 'address': 3},
-            {'body': 'getTime()', 'address': 4}]
+    return [{'body': 'AnswerProcessor.getName()', 'address': 1},
+            {'body': 'AnswerProcessor.getweather()', 'address': 2},
+            {'body': "AnswerProcessor.getDate()", 'address': 3},
+            {'body': "AnswerProcessor.getTime()", 'address': 4}]
 
 def add_questions():
     for i in range(len(set_questions())):

@@ -34,23 +34,30 @@ class MachineLearn:
         model.Q.assign_sub(learning_rate * dQ)
 
     def train_network(self, value_set):
-        model = TrainingModel(value_set)
-        desired_list = [4.00, 3.00, 2.00, 1.00]
-        num_examples = 10000
-        desired_ans = desired_list[0]
-        inputs = tf.random_normal(shape=[num_examples])
-        Qs = []
-        epochs = range(150)
-        for _ in epochs:
-            Qs.append(model.Q.numpy())
-            current_loss = self.loss(model.Q, desired_list)
-            self.train(model, inputs, desired_list, 0.1)
-            print(current_loss)
-        plt.plot(epochs, Qs, 'r')
-        plt.plot([desired_ans] * len(epochs), 'r--')
-        plt.legend(['Q', 'true q'])
-        
-        plt.show()
+        print(tf.executing_eagerly())
+        with tf.Session() as sess:
+            model = TrainingModel(value_set)
+            desired_list = [4.00, 3.00, 2.00, 1.00]
+            num_examples = 10000
+            # desired_ans = desired_list[0]
+            inputs = tf.random_normal(shape=[num_examples])
+            Qs = []
+            epochs = range(150)
+            for _ in epochs:
+                Qs.append(model.Q.numpy())
+                current_loss = self.loss(model.Q, desired_list)
+                # self.train(model, inputs, desired_list, 0.1)
+                with tf.GradientTape() as t:
+                    current_loss = self.loss(model(inputs), desired_list)
+
+                dQ = t.gradient(current_loss, model.Q)
+                model.Q.assign_sub(0.1 * dQ)
+            #     print(current_loss)
+            # plt.plot(epochs, Qs, 'r')
+            # plt.plot([desired_list] * len(epochs), 'r--')
+            # plt.legend(['Q', 'true q'])
+            
+            # plt.show()
 
     def get_output(self, value_set):
         self.value_set = value_set

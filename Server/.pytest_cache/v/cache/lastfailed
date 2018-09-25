@@ -1,5 +1,8 @@
 {
   "tests/1_test.py::test_answer": true, 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output": true, 
+  "tests/features/test_question_and_answers.py::TestClass::()::test_program_can_receive_question_and_pick_answer_correctly": true, 
+  "tests/machine_learning_tests/test_machine_learn.py": true, 
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass": true, 
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_train_network": true, 
   "tests/test_request_processor.py::TestClass::()::test_convert_answer": true
 }
