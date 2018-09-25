@@ -7,7 +7,6 @@ class Question extends Component {
     return(
       <View style={styles.questionBox}>
         <Text style={styles.questionText}>{this.props.question.text}</Text>
-        {/* <Text style={styles.questionText}>100</Text> */}
       </View>
     );
   }
@@ -22,7 +21,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#34b7f1',
     position: 'relative',
     right: -120,
-    margin: 2
+    margin: 2, 
+    maxWidth: 300
   },
   questionText: {
     color: '#fff',

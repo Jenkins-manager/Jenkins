@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AppRegistry, TextInput } from 'react-native';
 import { Button } from 'react-native';
-import InputAndSend from './Components/InputAndSend';
 import Question from './Components/Question';
 import Answer from './Components/Answer';
 
@@ -15,42 +14,18 @@ export default class App extends React.Component {
       questions: [] 
     };
   }
-  
-  // sendQuestion() {
-  //   fetch('http://localhost:8000/send_question/',
-  //     {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         body: this.state.text,
-  //       }),
-  //       }).then(function(result) {
-  //         if(!result.ok) {
-  //           throw Error('Bad data input')
-  //         }
-  //       }).then(function(result){
-  //           console.log(result)
-  //       }).catch(function(error) {
-  //           alert(error)
-  //     })
-  // }
 
-  sQ() {
+  sendQuestion() {
     const {questions, text} = this.state;
     questions.push({text});
     this.setState({questions})
+    
   }
-
-
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Jenkins</Text>
-        {/* <Question />
-        <Answer /> */}
         {
           this.state.questions.map((question, i) => {
             return (
@@ -60,12 +35,12 @@ export default class App extends React.Component {
         }
         <View style={styles.inputAndSendContainer}>
           <TextInput
-            style={styles.input}
+            style={styles.inputBox}
             onChangeText={(text) => this.setState({text})}
           />
           <Button
             title='Send'
-            onPress={() => this.sQ()}
+            onPress={() => this.sendQuestion()}
           />
         </View>
       </View>
@@ -89,7 +64,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 10
   },
-  input: {
+  inputBox: {
     flex:1,
     borderColor: 'gray',
     borderWidth: 1,
