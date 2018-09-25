@@ -6,14 +6,9 @@ import { Button } from 'react-native';
 class InputAndSend extends Component {
   render() {
     return (
-      <View style={styles.input}>
+      <View style={styles.inputAndSendContainer}>
           <TextInput
-            style={{
-              flex:1,
-              height: 35,
-              borderColor: 'gray',
-              borderWidth: 1
-            }}
+            style={styles.input}
           />
           <Button
             title='Send'
@@ -26,9 +21,16 @@ class InputAndSend extends Component {
 export default InputAndSend;
 
 const styles = StyleSheet.create({
-  input: {
+  inputAndSendContainer: {
     flexDirection: 'row',
     position: 'absolute',
     bottom: 10
+  },
+  input: {
+    flex:1,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 8
   }
+
 });

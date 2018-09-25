@@ -1,14 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-// import { AppRegistry, TextInput } from 'react-native';
-// import { Button } from 'react-native';
-import InputAndSend from './InputAndSend';
+import { AppRegistry, TextInput } from 'react-native';
+import { Button } from 'react-native';
+import InputAndSend from './Components/InputAndSend';
+import Question from './Components/Question';
+import Answer from './Components/Answer';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      text: '' 
+      text: '', 
+      questions: [] 
     };
   }
   
@@ -31,12 +34,20 @@ export default class App extends React.Component {
         }).catch(function(error) {
             alert(error)
       })
-  } 
+  }
+
+  sQ() {
+    const {questions, text} = this.state;
+    questions.push({text});
+    this.setState({questions})
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Jenkins</Text>
+        <Question />
+        <Answer />
         <InputAndSend />
       </View>
     );
@@ -54,9 +65,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 25,
   },
-  input: {
-    flexDirection: 'row',
-    position: 'absolute',
-    bottom: 10
+  answerBox: {
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: '#ece5dd',
+    position: 'relative',
+    left: -120,
+    margin: 2
   }
 });
