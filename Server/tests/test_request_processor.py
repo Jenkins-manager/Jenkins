@@ -34,3 +34,5 @@ class TestClass(object):
 
     def test_convert_answer(self):
         assert RequestProcessor.convert_answer("print('hello')") == True
+        assert RequestProcessor.convert_answer(lambda: 1 + 1) == True
+   
