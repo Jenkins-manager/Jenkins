@@ -11,15 +11,21 @@ export default class App extends React.Component {
 
     this.state = { 
       text: '', 
-      questions: [] 
+      questions: [],
+      answers: []
     };
   }
 
   sendQuestion() {
     const {questions, text} = this.state;
     questions.push({text});
-    this.setState({questions})
-    
+    this.setState({questions});
+  }
+
+  getAnswer() {
+    const {answers, text} = this.answers;
+    answers.push({text});
+    this.setState({answers});
   }
 
   render() {
