@@ -17,7 +17,8 @@ class TestClass(object):
         assert TestClass.machine_learn.de_normalize(TestClass.normalized_question) == TestClass.question_address
 
     def test_train_network(self):
-        assert True
+        # TestClass.machine_learn.train_network([1.00, 2.00, 3.00, 4.00])
+        assert True #== False
 
     def test_get_output(self):
         assert TestClass.machine_learn.get_output(TestClass.question_address) == 3

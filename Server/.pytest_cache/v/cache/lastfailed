@@ -1,4 +1,6 @@
 {
   "tests/1_test.py::test_answer": true, 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output": true
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output": true, 
+  "tests/test_request_processor.py::TestClass::()": true, 
+  "tests/test_request_processor.py::TestClass::()::test_convert_answer": true
 }

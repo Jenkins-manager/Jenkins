@@ -13,8 +13,8 @@ class RequestProcessor:
             try:
                 question = question_class.objects.get(body=request['body'])
                 return True, question.address
-            except Exception, e:
-                print(str(e))
+            except Exception:
+                #print(str(e))
                 return False
 
     @staticmethod
@@ -27,3 +27,7 @@ class RequestProcessor:
         answer = answer_class.objects.get(address = answer_address)
 
         return answer
+
+    @staticmethod
+    def convert_answer(answer_string):
+        exec(answer_string)
