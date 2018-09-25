@@ -25,9 +25,8 @@ class RequestProcessor:
     @staticmethod
     def get_answer(answer_address, answer_class):
         answer = answer_class.objects.get(address = answer_address)
-
         return answer
 
     @staticmethod
     def convert_answer(answer_string):
-        exec(answer_string)
+        return eval(answer_string)

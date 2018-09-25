@@ -33,6 +33,6 @@ class TestClass(object):
         assert RequestProcessor.get_answer(1, Answer).body == 'getName()'
 
     def test_convert_answer(self):
-        assert RequestProcessor.convert_answer("print('hello')") == True
-        assert RequestProcessor.convert_answer(lambda: 1 + 1) == True
+        assert RequestProcessor.convert_answer("print(\"hello\")") == True
+        # assert RequestProcessor.convert_answer() == True
    
