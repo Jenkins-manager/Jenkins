@@ -26,12 +26,12 @@ export default class App extends React.Component {
     const {answers, text} = this.answers;
     answers.push({text});
     this.setState({answers});
-  }
+  } 
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Jenkins</Text>
+      <Text style={styles.title}>Jenkins</Text>
         {
           this.state.questions.map((question, i) => {
             return (
@@ -39,6 +39,7 @@ export default class App extends React.Component {
             )
           })
         }
+        <Answer />
         <View style={styles.inputAndSendContainer}>
           <TextInput
             style={styles.inputBox}

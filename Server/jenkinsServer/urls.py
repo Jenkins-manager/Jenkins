@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from questions.views import get_questions, send_question
+from answers.views import get_answer
+from users.views import send_username
 from jenkinsServer.views import index
 from jenkinsServer import views
 
@@ -26,4 +28,6 @@ urlpatterns = [
     url('home/',index),
     url('get_questions/', get_questions),
     url('send_question/', send_question),
+    url('get_answer/', get_answer),
+    url('send_username/', send_username)
 ]

@@ -1,6 +1,8 @@
 <textarea id="textQ"></textarea>
-<button onClick={sendQuestion()}>Send</button>
-<label id='answer'></label>
+<button onClick={sendQuestion()}>Send question</button>
+
+<textarea id="username"></textarea>
+<button onClick={sendUsername()}>Submit username</button>
 
 <script>
     function sendQuestion() {
@@ -22,5 +24,18 @@
             alert(error)
         })
 
+    }
+
+    function sendUsername() {
+        fetch('/send_username/',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                    body: document.getElementById('username').value,
+                }),
+        })
     }
 </script>
