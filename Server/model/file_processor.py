@@ -5,11 +5,11 @@
 class FileProcessor:
 
     @staticmethod
-    def read_from_file(file_path):
+    def read_file(file_path):
         return 
     
     @staticmethod
-    def write_to_file(file_path, content):
+    def write_file(file_path, content):
         return
 
     @staticmethod
