@@ -13,7 +13,7 @@ class FileProcessor:
     @staticmethod
     def read_file(file_path):
         file = open(FileProcessor.make_file_path(file_path), 'r')
-        return F.read()
+        return file.read()
     
     @staticmethod
     def write_file(file_path, content, mode):
