@@ -1,3 +1,6 @@
 {
-  "tests/1_test.py::test_answer": true
+  "tests/features/test_question_and_answers.py::TestClass::()": true, 
+  "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer": true, 
+  "tests/test_answer_processor.py::TestClass::()::test_getName": true, 
+  "tests/test_request_processor.py::TestClass::()": true
 }

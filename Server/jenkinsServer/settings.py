@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     #custom apps here
-    'questions'
+    'questions',
+    'answers',
+    'users'
 ]
 
 MIDDLEWARE = [
