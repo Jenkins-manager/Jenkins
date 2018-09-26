@@ -36,3 +36,4 @@ class QuestionAnalysis():
     @staticmethod
     def process_user_question(question):
         processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(question))
+        return QuestionAnalysis.match_keyword_to_address(processed_question)

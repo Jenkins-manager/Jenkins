@@ -33,3 +33,11 @@ class TestCLass(object):
 
     def test_match_keywords_fail(self):
         assert QuestionAnalysis.match_keyword_to_address(['nonexistant']) == None
+
+    # full cycle tests
+
+    def test_process_user_question_using_known_keyword(self):
+        assert QuestionAnalysis.process_user_question('What is your name') == 1
+    
+    def test_process_user_question_using_similar_keyword(self):
+        assert True
