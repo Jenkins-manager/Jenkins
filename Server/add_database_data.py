@@ -7,13 +7,15 @@ def set_questions():
     return [{'body': 'What time is it?', 'address': 1},
             {'body': "what is today's date?", 'address': 2},
             {'body': 'What is the weather?', 'address': 3},
-            {'body': 'What is my name?', 'address': 4}]
+            {'body': 'What is my name?', 'address': 4},
+            {'body': 'Where am I?', 'address': 5}]
 
 def set_answers():
     return [{'body': 'AnswerProcessor.getName()', 'address': 1},
             {'body': 'AnswerProcessor.getWeather()', 'address': 2},
             {'body': "AnswerProcessor.getDate()", 'address': 3},
-            {'body': "AnswerProcessor.getTime()", 'address': 4}]
+            {'body': "AnswerProcessor.getTime()", 'address': 4},
+            {'body': "AnswerProcessor.getLocation()", 'address': 5}]
 
 def add_questions():
     for i in range(len(set_questions())):

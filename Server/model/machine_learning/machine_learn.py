@@ -5,17 +5,13 @@ from __future__ import absolute_import, division, print_function
 
 import os
 import sys
-import matplotlib.pyplot as plt
-
 import tensorflow as tf
 from tensorflow import keras
-
 import threading
-
 from ...model.machine_learning.training_model import TrainingModel
 import tensorflow as tf
 import numpy
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 tf.enable_eager_execution()
 
@@ -34,13 +30,13 @@ class MachineLearn(threading.Thread):
 
     def loss(self, predicted_y, desired_y):
         return tf.reduce_mean(tf.square(predicted_y - desired_y))
-        
+
     def normalize(self, address):
         return (address - MachineLearn.VALUES_MIN) / float(MachineLearn.VALUES_MAX - MachineLearn.VALUES_MIN)
-    
+
     def de_normalize(self, normalized_address):
         return MachineLearn.VALUES_MIN + (normalized_address * (MachineLearn.VALUES_MAX - MachineLearn.VALUES_MIN))
-    
+
     def train(self, model, inputs, outputs, learning_rate):
         with tf.GradientTape() as t:
             current_loss = self.loss(model(inputs), outputs)
@@ -51,7 +47,7 @@ class MachineLearn(threading.Thread):
     def train_network(self, value_set, question):
         index = value_set.index(question)
         tf.reset_default_graph()
-        model = TrainingModel(value_set)  
+        model = TrainingModel(value_set)
         desired_list = [4.00, 3.00, 2.00, 1.00]
         num_examples = 10000
         num_epochs = 70
@@ -75,5 +71,5 @@ class MachineLearn(threading.Thread):
             return self.run([1.00, 2.00, 3.00, 4.00], question)
         except Exception, e:
             return "question not found"
-    
+
     # run?

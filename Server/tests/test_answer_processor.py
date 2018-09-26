@@ -13,5 +13,8 @@ class TestClass(object):
     def test_getDate(self):
         assert AnswerProcessor.getDate() == "Todays date is: " + strftime("%Y-%m-%d", gmtime())
 
-    def test_get_weather(self):
+    def test_getWeather(self):
         assert "C" in AnswerProcessor.getWeather()
+
+    def test_getLocation(self):
+        assert AnswerProcessor.getLocation() == "You are in Hackney, in the United Kingdom"
