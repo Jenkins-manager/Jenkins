@@ -18,6 +18,6 @@ def send_username(request):
 
 @api_view(['get'])
 def get_username(request):
-    username = User.objects.all()
+    username = User.objects.order_by("-created_at")
     serializer = UserSerializer(username, many=True)
     return Response(serializer.data)
