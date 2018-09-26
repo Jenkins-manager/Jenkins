@@ -19,7 +19,7 @@ class TestClass(object):
         assert RequestProcessor.check_request({'body': 'What time is it?'}, Question)[0] == True
 
     def test_check_request_returns_correct_address(self):
-        assert RequestProcessor.check_request({'body': "what is today's date?"}, Question)[1] == 2
+        assert RequestProcessor.check_request({'body': "what is the weather like my good friend Jenkins"}, Question)[1] == 2
 
     def test_check_request_throws_with_no_input(self):
         assert RequestProcessor.check_request({'body': ''}, Question) == False
