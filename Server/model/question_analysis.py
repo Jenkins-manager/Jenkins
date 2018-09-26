@@ -12,39 +12,46 @@ from file_processor import FileProcessor
 
 class QuestionAnalysis(threading.Thread):
 
-    def __init__(self):
+    def __init__(self, question):
         threading.Thread.__init__(self)
+        self.question = question
+        self.address = None
 
-    def run(self, question):
+    def run(self):
         print("starting question thread")
-         # preparation stage
-        processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(question))
+        # preparation stage
+        processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
         keyword_list = QuestionAnalysis.get_question_keywords()
         
         # initial match
         match = QuestionAnalysis.match_keyword_to_address(processed_question)
         if match != None:
             print("finished question thread at stage 1")
+            self.address = match
             return match
         
         # second stage
         match = QuestionAnalysis.compare_keyword_to_list(processed_question)
         if match != None:
             print("finished question thread at stage 2")
+            self.address = match
             return match
 
         # third stage
         match = QuestionAnalysis.find_synonym(processed_question)
         if match != None:
             print("finished question thread at stage 3")
+            self.address = match
             return match
         
         print("finished question thread with no result")
-        
+
+        # third stage
+
     @staticmethod
     def question_destroy(question):
         q_arr = question.split()
-        return map(lambda w: w.lower(), list(filter(lambda w : len(w) > 3, q_arr)))
+        return map(lambda w: w.lower(), list(filter(lambda w : len(w) > 2, q_arr)))
 
     @staticmethod
     def non_keywords_list():
@@ -92,6 +99,8 @@ class QuestionAnalysis(threading.Thread):
 
     @staticmethod
     def process_user_question(question):
-       return QuestionAnalysis.run(QuestionAnalysis(), question)
-
-        # third stage
+        thread = QuestionAnalysis(question)
+        thread.start()
+        thread.join()
+        return thread.address
+        

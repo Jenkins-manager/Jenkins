@@ -30,9 +30,10 @@ class RequestProcessor:
 
     @staticmethod
     def process_request(question_address, answer_class):
-        machine_learn = MachineLearn()
-        answer = machine_learn.get_output(question_address)
-        return RequestProcessor.get_answer(answer, answer_class)
+        machine_learn = MachineLearn(question_address)
+        machine_learn.start()
+        machine_learn.join()
+        return RequestProcessor.get_answer(machine_learn.answer, answer_class)
 
     @staticmethod
     def get_answer(answer_address, answer_class):

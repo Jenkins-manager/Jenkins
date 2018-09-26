@@ -11,7 +11,7 @@ from answers.models import Answer
 from ..model.request_processor import RequestProcessor
 
 class TestClass(object):
-
+    
     # def test_get_questions(self):
     #     assert RequestProcessor.get_questions(QuestionSerializer, Question).data[0]['body'] == 'What time is it?'
 

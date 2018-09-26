@@ -17,21 +17,20 @@ class MachineLearn(threading.Thread):
     VALUES_MIN = 1 # always 1
     VALUES_MAX = 4 # get all answers then see length of array
 
-    def __init__(self):
+    def __init__(self, question):
         threading.Thread.__init__(self)
+        self.question = question
+        self.answer = None
+        self.value_set = [4.00, 3.00, 2.00, 1.00]
 
-    def run(self, value_set, question):
-        print("starting thread")
-        return self.train_network(value_set, question)
+    def run(self):
+        print("starting training thread...")
+        self.train_network()
+        print(self.answer)
+        print("completed training thread")
 
     def loss(self, predicted_y, desired_y):
         return tf.reduce_mean(tf.square(predicted_y - desired_y))
-
-    def normalize(self, address):
-        return (address - MachineLearn.VALUES_MIN) / float(MachineLearn.VALUES_MAX - MachineLearn.VALUES_MIN)
-
-    def de_normalize(self, normalized_address):
-        return MachineLearn.VALUES_MIN + (normalized_address * (MachineLearn.VALUES_MAX - MachineLearn.VALUES_MIN))
 
     def train(self, model, inputs, outputs, learning_rate):
         with tf.GradientTape() as t:
@@ -40,10 +39,10 @@ class MachineLearn(threading.Thread):
         dQ = t.gradient(current_loss, model.Q)
         model.Q.assign_sub(learning_rate * dQ)
 
-    def train_network(self, value_set, question):
-        index = value_set.index(question)
+    def train_network(self):
+        index = self.value_set.index(self.question)
         tf.reset_default_graph()
-        model = TrainingModel(value_set)
+        model = TrainingModel(self.value_set)
         desired_list = [4.00, 3.00, 2.00, 1.00]
         num_examples = 10000
         num_epochs = 70
@@ -59,13 +58,5 @@ class MachineLearn(threading.Thread):
                 dQ = t.gradient(current_loss, model.Q)
                 model.Q.assign_sub(0.1 * dQ)
             if(epoch == num_epochs - 1):
-                print("Exited thread")
-                return int(round(model.Q.numpy().tolist()[index]))
-
-    def get_output(self, question):
-        try:
-            return self.run([1.00, 2.00, 3.00, 4.00], question)
-        except Exception, e:
-            return "question not found"
-
-    # run?
+                self.answer = int(round(model.Q.numpy().tolist()[index]))
+                return self.answer

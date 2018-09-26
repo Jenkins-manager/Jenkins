@@ -27,6 +27,7 @@ def send_question(request):
     request_data = RequestProcessor.check_request(request.data, Question)
     try:
         answer_string = RequestProcessor.process_request(request_data[1], Answer)
+        print(answer_string)
         return JsonResponse({'answer': answer_string})
     except Exception, e:
         return Response(status=500, data='Empty Question')
