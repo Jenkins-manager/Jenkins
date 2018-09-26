@@ -41,8 +41,6 @@
   "tests/features/test_question_and_answers.py::TestClass::()::test_answer_can_be_fetched_and_excecuted", 
   "tests/features/test_question_and_answers.py::TestClass::()::test_program_can_receive_question_and_pick_answer_correctly", 
   "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer", 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_normalize", 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_de_normalize", 
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_train_network", 
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output"
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_thread_start"
 ]

@@ -12,35 +12,40 @@ from file_processor import FileProcessor
 
 class QuestionAnalysis(threading.Thread):
 
-    def __init__(self):
+    def __init__(self, question):
         threading.Thread.__init__(self)
+        self.question = question
+        self.address = None
 
-    def run(self, question):
+    def run(self):
         print("starting question thread")
          # preparation stage
-        processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(question))
+        processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
         keyword_list = QuestionAnalysis.get_question_keywords()
         
         # initial match
         match = QuestionAnalysis.match_keyword_to_address(processed_question)
         if match != None:
             print("finished question thread at stage 1")
-            return match
+            self.address =  match
+            return
         
         # second stage
         match = QuestionAnalysis.compare_keyword_to_list(processed_question)
         if match != None:
             print("finished question thread at stage 2")
-            return match
+            self.address = match
+            return
 
         # third stage
         match = QuestionAnalysis.find_synonym(processed_question)
         if match != None:
             print("finished question thread at stage 3")
-            return match
-        
+            self.address = match
+            return
+
         print("finished question thread with no result")
-        
+
     @staticmethod
     def question_destroy(question):
         q_arr = question.split()
@@ -92,6 +97,6 @@ class QuestionAnalysis(threading.Thread):
 
     @staticmethod
     def process_user_question(question):
-       return QuestionAnalysis.run(QuestionAnalysis(), question)
-
-        # third stage
+        thread = QuestionAnalysis(question)
+        thread.start()
+        return thread.address
