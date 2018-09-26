@@ -5,7 +5,7 @@
 import tensorflow as tf
 from tensorflow import keras
 import threading
-from ...model.machine_learning.training_model import TrainingModel
+from training_model import TrainingModel
 import tensorflow as tf
 import numpy
 # import matplotlib.pyplot as plt
