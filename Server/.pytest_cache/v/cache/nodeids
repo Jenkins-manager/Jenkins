@@ -3,6 +3,7 @@
   "tests/test_answer_processor.py::TestClass::()::test_getDate", 
   "tests/test_answer_processor.py::TestClass::()::test_getWeather", 
   "tests/test_answer_processor.py::TestClass::()::test_getLocation", 
+  "tests/test_answer_processor.py::TestClass::()::test_getName", 
   "tests/test_file_processor.py::TestClass::()::test_read_file_test_file", 
   "tests/test_file_processor.py::TestClass::()::test_read_file_throws_when_invalid_file", 
   "tests/test_question_analysis.py::TestCLass::()::test_question_destroy_can_break_question_into_words", 

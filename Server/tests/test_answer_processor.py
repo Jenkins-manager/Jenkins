@@ -18,3 +18,6 @@ class TestClass(object):
 
     def test_getLocation(self):
         assert AnswerProcessor.getLocation() == "You are in Hackney, in the United Kingdom"
+
+    def test_getName(self):
+        assert AnswerProcessor.getName() == 0
