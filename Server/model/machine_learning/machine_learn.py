@@ -5,7 +5,7 @@
 import tensorflow as tf
 from tensorflow import keras
 import threading
-from Jenkins.Server.model.machine_learning.training_model import TrainingModel
+from model.machine_learning.training_model import TrainingModel
 import numpy
 # import matplotlib.pyplot as plt
 

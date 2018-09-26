@@ -11,8 +11,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
 
-from Jenkins.Server.model.request_processor import RequestProcessor
-from Jenkins.Server.answers.models import Answer
+from model.request_processor import RequestProcessor
+from answers.models import Answer
 
 from .models import Question
 from .serializers import QuestionSerializer
