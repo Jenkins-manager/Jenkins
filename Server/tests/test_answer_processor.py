@@ -20,4 +20,4 @@ class TestClass(object):
         assert AnswerProcessor.getLocation() == "You are in Hackney, in the United Kingdom"
 
     def test_getName(self):
-        assert AnswerProcessor.getName() == 0
+        assert AnswerProcessor.getName() == "Your name is Daniel"
