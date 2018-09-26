@@ -23,27 +23,32 @@ export default class App extends React.Component {
   }
 
   sendQuestion() {
-    const {questions, text} = this.state;
+    const {questions, text, answers} = this.state;
     questions.push({text});
     this.setState({questions});
-    fetch('/send_question/',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                    body: document.getElementById('textQ').value,
-                }),
+    fetch('http://localhost:8000/send_question/',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          body: this.state.text,
+        }),
         }).then(function(result) {
-            if(!result.ok) {
-                console.log(result)
-                throw Error('Bad data input')
-            }
+          if(!result.ok) {
+            alert(result)
+            throw Error('Bad data input')
+          }
+          return result.json();
+        }).then(function(answerJson) {
+          answers.push((JSON.stringify(answerJson)));
+          alert(JSON.stringify(answerJson));
+          // alert(this.state.answers);
+          //render an answer
         }).catch(function(error) {
-            alert(error)
-        })
-
+          alert(error);
+        });
   }
 
   getAnswer() {
@@ -60,7 +65,7 @@ export default class App extends React.Component {
           this.state.questions.map((question, i) => {
             return (
               <Question key={i} question={question}/>
-            )
+           )
           })
         }
         <View style={styles.inputAndSendContainer}>
