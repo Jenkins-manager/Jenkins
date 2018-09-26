@@ -34,10 +34,25 @@ class TestCLass(object):
     def test_match_keywords_fail(self):
         assert QuestionAnalysis.match_keyword_to_address(['nonexistant']) == None
 
+    def test_match_keywords_using_two_keywords(self):
+        assert QuestionAnalysis.match_keyword_to_address(['name', 'date']) == 1
+
+    def test_compare_keyword_to_list(self):
+        assert QuestionAnalysis.compare_keyword_to_list(['uwotmate', 'dates']) == 3
+    
+    def test_compare_keyword_to_list_should_fail(self):
+        assert QuestionAnalysis.compare_keyword_to_list(['uwotmate', 'data']) == None
+    
+    def test_compare_keyword_to_list_using_two_similar_words(self):
+        assert QuestionAnalysis.compare_keyword_to_list(['dates', 'names']) == 3
+
     # full cycle tests
 
     def test_process_user_question_using_known_keyword(self):
-        assert QuestionAnalysis.process_user_question('What is your name') == 1
+        assert QuestionAnalysis.process_user_question('tell me my name please?') == 1
     
     def test_process_user_question_using_similar_keyword(self):
+        assert QuestionAnalysis.process_user_question('tell me my names please?') == 1
+
+    def test_process_user_question_using_thesauras(self):
         assert True
