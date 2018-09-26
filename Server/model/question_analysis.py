@@ -19,7 +19,7 @@ class QuestionAnalysis(threading.Thread):
 
     def run(self):
         print("starting question thread")
-         # preparation stage
+        # preparation stage
         processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
         keyword_list = QuestionAnalysis.get_question_keywords()
         
@@ -27,24 +27,26 @@ class QuestionAnalysis(threading.Thread):
         match = QuestionAnalysis.match_keyword_to_address(processed_question)
         if match != None:
             print("finished question thread at stage 1")
-            self.address =  match
-            return
+            self.address = match
+            return match
         
         # second stage
         match = QuestionAnalysis.compare_keyword_to_list(processed_question)
         if match != None:
             print("finished question thread at stage 2")
             self.address = match
-            return
+            return match
 
         # third stage
         match = QuestionAnalysis.find_synonym(processed_question)
         if match != None:
             print("finished question thread at stage 3")
             self.address = match
-            return
-
+            return match
+        
         print("finished question thread with no result")
+
+        # third stage
 
     @staticmethod
     def question_destroy(question):
@@ -99,4 +101,6 @@ class QuestionAnalysis(threading.Thread):
     def process_user_question(question):
         thread = QuestionAnalysis(question)
         thread.start()
+        thread.join()
         return thread.address
+        

@@ -26,6 +26,7 @@ class MachineLearn(threading.Thread):
     def run(self):
         print("starting training thread...")
         self.train_network()
+        print(self.answer)
         print("completed training thread")
 
     def loss(self, predicted_y, desired_y):
