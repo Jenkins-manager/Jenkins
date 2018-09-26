@@ -4,6 +4,7 @@
 """
 class QuestionAnalysis():
 
-    def __init__(self):
-        print()
+    @staticmethod
+    def question_destroy(question):
+        return question
     
