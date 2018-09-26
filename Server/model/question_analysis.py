@@ -5,8 +5,10 @@
 
 import ast
 
-from file_processor import FileProcessor
 from difflib import SequenceMatcher
+from thesaurus import Word
+
+from file_processor import FileProcessor
 
 class QuestionAnalysis():
 
@@ -41,7 +43,24 @@ class QuestionAnalysis():
             for key in keyword_list.keys():
                 if SequenceMatcher(None, word, key).ratio() > 0.8:
                     return keyword_list[key]
+
+    @staticmethod
+    def add_word_to_keyword_list(word, address, keywords):
+        keywords[word] = address
+        print(keywords)
+        FileProcessor.write_file('./key_words/keywords.jenk', str(keywords), 'w')
+        return keywords
     
+    @staticmethod
+    def find_synonym(q_arr):
+        keyword_list = QuestionAnalysis.get_question_keywords()
+        for word in q_arr:
+            words = Word(word).synonyms()
+            matches = list(filter(lambda w: w in keyword_list.keys(), words))
+            if matches != []:
+                QuestionAnalysis.add_word_to_keyword_list(word, keyword_list[matches[0]], keyword_list)
+                return keyword_list[matches[0]]
+
     @staticmethod
     def process_user_question(question):
         # preparation stage
@@ -55,6 +74,11 @@ class QuestionAnalysis():
         
         # second stage
         match = QuestionAnalysis.compare_keyword_to_list(processed_question)
+        if match != None:
+            return match
+
+        # third stage
+        match = QuestionAnalysis.find_synonym(processed_question)
         if match != None:
             return match
 

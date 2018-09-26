@@ -4,7 +4,7 @@
 import pytest
 from ..model.question_analysis import QuestionAnalysis
 
-class TestCLass(object):
+class TestClass(object):
 
     def test_question_destroy_can_break_question_into_words(self):
         assert QuestionAnalysis.question_destroy('what is your name') == ['what', 'your', 'name']
@@ -26,7 +26,7 @@ class TestCLass(object):
                                                         'will', 'does', 'like', 'been']
 
     def test_get_question_keywords_contains_starting_words(self):
-        assert QuestionAnalysis.get_question_keywords().items() >= {'name': 1, 'weather': 2, 'date': 3, 'time': 4}.items()
+        assert QuestionAnalysis.get_question_keywords().items() <= {'name': 1, 'weather': 2, 'date': 3, 'time': 4}.items()
                                                         
     def test_match_keyword_to_address_sucess(self):
         assert QuestionAnalysis.match_keyword_to_address(['your', 'name']) == 1
@@ -46,6 +46,19 @@ class TestCLass(object):
     def test_compare_keyword_to_list_using_two_similar_words(self):
         assert QuestionAnalysis.compare_keyword_to_list(['dates', 'names']) == 3
 
+    def test_find_synonym(self):
+        assert QuestionAnalysis.find_synonym(['title']) == 1
+
+    def test_find_synonym_no_match(self):
+        assert False
+
+    def test_find_synonym_multiple_matches(self):
+        assert False
+
+    def test_add_word_to_keyword_list(self):
+        new_data = QuestionAnalysis.add_word_to_keyword_list('title', 1, {'name': 1, 'weather': 2, 'date': 3, 'time': 4})
+        assert new_data == {'date': 3, 'title': 1, 'weather': 2, 'name': 1, 'time': 4}
+
     # full cycle tests
 
     def test_process_user_question_using_known_keyword(self):
@@ -55,4 +68,4 @@ class TestCLass(object):
         assert QuestionAnalysis.process_user_question('tell me my names please?') == 1
 
     def test_process_user_question_using_thesauras(self):
-        assert True
+        assert False
