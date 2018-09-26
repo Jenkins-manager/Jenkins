@@ -1,11 +1,6 @@
 """
     Machine Learning class
 """
-from __future__ import absolute_import, division, print_function
-
-import os
-import sys
-import matplotlib.pyplot as plt
 
 import tensorflow as tf
 from tensorflow import keras
