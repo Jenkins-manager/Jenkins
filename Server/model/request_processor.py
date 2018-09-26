@@ -1,5 +1,10 @@
+"""
+    Request Processing class: processes Http request data
+    and fetches results from machine-learn
+"""
 from time import gmtime, strftime
 from .answer_processor import AnswerProcessor
+from .machine_learning.machine_learn import MachineLearn
 
 class RequestProcessor:
 
@@ -17,20 +22,18 @@ class RequestProcessor:
                 question = question_class.objects.get(body=request['body'])
                 return True, question.address
             except Exception:
-                #print(str(e))
                 return False
 
     @staticmethod
-    def process_request(question_address):
-
-        return 0
+    def process_request(question_address, answer_class):
+        machine_learn = MachineLearn()
+        answer = machine_learn.get_output(question_address)
+        return RequestProcessor.get_answer(answer, answer_class)
 
     @staticmethod
     def get_answer(answer_address, answer_class):
-        answer = answer_class.objects.get(address = answer_address)
-        return answer
-
-    @staticmethod
-    def convert_answer(answer_string):
-        # print eval(answer_string)
-        return eval(answer_string)
+        try:
+            answer = answer_class.objects.get(address = answer_address)
+            return eval(answer.body)
+        except Exception, e:
+            raise e

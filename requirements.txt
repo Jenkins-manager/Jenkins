@@ -1,5 +1,12 @@
-psycopg2
-django
 pylint
+
+# Pg modules
+psycopg2-binary
+
+# django modules
+django
 django-rest-framework
-# tensorflow
+
+# tensorflow modules
+tensorflow
+matplotlib

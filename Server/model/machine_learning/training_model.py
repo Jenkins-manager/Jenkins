@@ -11,6 +11,6 @@ class TrainingModel(object):
     def __init__(self, questions):
         self.questions = questions
         self.Q = tfe.Variable(questions)
-    
+
     def __call__(self, inputs):
         return self.Q

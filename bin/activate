@@ -37,6 +37,8 @@ deactivate () {
     fi
 }
 
+set DJANGO_SETTINGS_MODULE=Jenins.settings
+
 # unset irrelevant variables
 deactivate nondestructive
 

@@ -3,18 +3,15 @@
 """
 
 from time import gmtime, strftime
-
 import json
 import requests
+
+
 class AnswerProcessor:
 
     @staticmethod
     def getTime():
         return "The time is: " + strftime("%H:%M:%S", gmtime())
-
-    @staticmethod
-    def getName():
-        return 0
 
     @staticmethod
     def getDate():
@@ -30,6 +27,16 @@ class AnswerProcessor:
         return ("The weather today is: " + result['weather'][0]['description'] + " " +
                 str(result['main']['temp']) + " C")
 
+    @staticmethod
+    def getLocation():
+        url = 'http://api.ipstack.com/185.53.227.70?access_key=cf6acf373a6d8f4f5a52bd3301a482aa'
+        response = requests.get(url).text
+        result = json.loads(response)
+        return ("You are in " + result['city'] + ", in the " + result['country_name'])
 
-
-
+    @staticmethod
+    def getName():
+        url = 'http://localhost:8000/get_username/'
+        response = requests.get(url).text
+        result = json.loads(response)
+        return ("Your name is " + result[0]['username'])
