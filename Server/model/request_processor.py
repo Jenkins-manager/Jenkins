@@ -5,6 +5,7 @@
 from time import gmtime, strftime
 from .answer_processor import AnswerProcessor
 from .machine_learning.machine_learn import MachineLearn
+from question_analysis import QuestionAnalysis
 
 class RequestProcessor:
 
@@ -19,8 +20,11 @@ class RequestProcessor:
             return False
         else:
             try:
-                question = question_class.objects.get(body=request['body'])
-                return True, question.address
+                question_address = QuestionAnalysis.process_user_question(request['body'])         
+                if question_address != None:
+                    return True, question_address
+                else:
+                    raise('Question not found')
             except Exception:
                 return False
 

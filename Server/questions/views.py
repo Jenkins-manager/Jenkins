@@ -5,10 +5,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import json
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 from Jenkins.Server.model.request_processor import RequestProcessor
+from Jenkins.Server.answers.models import Answer
+
 from .models import Question
 from .serializers import QuestionSerializer
 
@@ -21,7 +26,7 @@ def get_questions(_):
 def send_question(request):
     request_data = RequestProcessor.check_request(request.data, Question)
     try:
-        RequestProcessor.process_request(request_data[1])
-        return Response({'message': 'new data', 'data': request.data})
+        answer_string = RequestProcessor.process_request(request_data[1], Answer)
+        return JsonResponse({'answer': answer_string})
     except Exception, e:
         return Response(status=500, data='Empty Question')
