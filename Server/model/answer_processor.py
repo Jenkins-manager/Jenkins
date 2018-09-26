@@ -5,7 +5,7 @@
 from time import gmtime, strftime
 import json
 import requests
-# from .users.models import user
+
 
 class AnswerProcessor:
 
@@ -36,4 +36,7 @@ class AnswerProcessor:
 
     @staticmethod
     def getName():
-        print(User.objects.order_by('created_at'))
+        url = 'http://localhost:8000/get_username/'
+        response = requests.get(url).text
+        result = json.loads(response)
+        return ("Your name is " + result[0]['username'])
