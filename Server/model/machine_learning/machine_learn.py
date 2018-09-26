@@ -1,12 +1,13 @@
 """
     Machine Learning class
 """
-
+import numpy
+import threading
 import tensorflow as tf
 from tensorflow import keras
-import threading
+
 from model.machine_learning.training_model import TrainingModel
-import numpy
+from model.file_processor import FileProcessor
 # import matplotlib.pyplot as plt
 
 tf.enable_eager_execution()
@@ -21,7 +22,12 @@ class MachineLearn(threading.Thread):
         threading.Thread.__init__(self)
         self.question = question
         self.answer = None
-        self.value_set = [4.00, 3.00, 2.00, 1.00]
+        try:
+            self.value_set = FileProcessor.read_file('./machine_learning/data/value_set.jenk').split(',')
+            self.value_set = map(float, self.value_set)
+            print(self.value_set)
+        except Exception, e:
+            raise e
 
     def run(self):
         print("starting training thread...")
