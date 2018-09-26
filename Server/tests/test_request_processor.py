@@ -32,13 +32,13 @@ class TestClass(object):
     def test_process_request_bad_question_address(self):
         try:
             RequestProcessor.process_request(-1, Answer)
-            fail("no excetion thrown")
+            pytest.fail("no excetion thrown")
         except Exception, e:
             assert True
 
     def test_get_answer_invalid_answer(self):
         try:
             RequestProcessor.get_answer(400, Answer)
-            fail("no exception thrown")
+            pytest.fail("no exception thrown")
         except Exception, e:
             assert str(e) == 'Answer matching query does not exist.'
