@@ -3,11 +3,8 @@
   "tests/test_answer_processor.py::TestClass::()::test_getDate", 
   "tests/test_answer_processor.py::TestClass::()::test_getWeather", 
   "tests/test_answer_processor.py::TestClass::()::test_getLocation", 
-<<<<<<< HEAD
-  "tests/test_file_processor.py::TestClass::()::test_make_file_path", 
-=======
   "tests/test_answer_processor.py::TestClass::()::test_getName", 
->>>>>>> 54fbf8fc902fc6507d042634bdb0e8c369c839c2
+  "tests/test_file_processor.py::TestClass::()::test_make_file_path", 
   "tests/test_file_processor.py::TestClass::()::test_read_file_test_file", 
   "tests/test_file_processor.py::TestClass::()::test_read_file_throws_when_invalid_file", 
   "tests/test_file_processor.py::TestClass::()::test_write_file_writes_test_file", 

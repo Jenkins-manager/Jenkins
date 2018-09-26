@@ -5,7 +5,7 @@
 from time import gmtime, strftime
 import json
 import requests
-# from ..users.models import users
+# from .users.models import user
 
 class AnswerProcessor:
 
