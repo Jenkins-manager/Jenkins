@@ -1,8 +1,11 @@
+"""
+    request processor test file
+"""
+
 import pytest
 import django
 django.setup()
 from questions.models import Question
-# from questions.serializers import QuestionSerializer
 from time import gmtime, strftime
 from answers.models import Answer
 from ..model.request_processor import RequestProcessor

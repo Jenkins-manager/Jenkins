@@ -12,10 +12,10 @@ class FileProcessor:
 
     @staticmethod
     def read_file(file_path):
-        F = open(FileProcessor.make_file_path(file_path), 'r')
+        file = open(FileProcessor.make_file_path(file_path), 'r')
         return F.read()
     
     @staticmethod
     def write_file(file_path, content, mode):
-        F = open(FileProcessor.make_file_path(file_path), mode)
-        F.write(content)
+        file = open(FileProcessor.make_file_path(file_path), mode)
+        file.write(content)
