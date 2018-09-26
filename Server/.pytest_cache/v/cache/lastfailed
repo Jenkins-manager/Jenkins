@@ -2,6 +2,7 @@
   "tests/features/test_question_and_answers.py::TestClass": true, 
   "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer": true, 
   "tests/test_answer_processor.py::TestClass": true, 
+  "tests/test_answer_processor.py::TestClass::()::test_getName": true, 
   "tests/test_file_processor.py::TestClass::()::test_read_file_test_file": true, 
   "tests/test_file_processor.py::TestClass::()::test_read_file_throws_when_invalid_file": true, 
   "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_dosent_rmove_keyword": true, 

@@ -3,18 +3,15 @@
 """
 
 from time import gmtime, strftime
-
 import json
 import requests
+# from ..users.models import users
+
 class AnswerProcessor:
 
     @staticmethod
     def getTime():
         return "The time is: " + strftime("%H:%M:%S", gmtime())
-
-    @staticmethod
-    def getName():
-        return 0
 
     @staticmethod
     def getDate():
@@ -36,3 +33,7 @@ class AnswerProcessor:
         response = requests.get(url).text
         result = json.loads(response)
         return ("You are in " + result['city'] + ", in the " + result['country_name'])
+
+    @staticmethod
+    def getName():
+        print(User.objects.order_by('created_at'))
