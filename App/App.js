@@ -16,6 +16,12 @@ export default class App extends React.Component {
     };
   }
 
+  componetDidMount() {
+    //. first ask user question
+    // They respond with name
+    // sa
+  }
+
   sendQuestion() {
     const {questions, text} = this.state;
     questions.push({text});
@@ -39,7 +45,6 @@ export default class App extends React.Component {
             )
           })
         }
-        <Answer />
         <View style={styles.inputAndSendContainer}>
           <TextInput
             style={styles.inputBox}
