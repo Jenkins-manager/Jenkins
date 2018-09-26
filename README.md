@@ -1,4 +1,5 @@
 # Jenkins
+[![Build Status](https://travis-ci.org/Jenkins-manager/Jenkins.svg?branch=master)](https://travis-ci.org/Jenkins-manager/Jenkins)
 
 ## Dependencies
 
@@ -8,6 +9,12 @@
 - Pytest
 - React Native
 
+## Installation
+
+### Development
+
+If you wish to contribute to this project, in addition to the requirements listed above you will need to follow the steps listed below.
+    - export DJANGO_SETTINGS_MODULE=jenkinsServer.settings (this adds the settings to your path)
 ```
 git clone https://github.com/Jenkins-manager/Jenkins.git
 ```
@@ -20,13 +27,7 @@ npm install
 npm install -g react-native-cli
 ```
 ```
-sudo pip install django
-```
-
-```
-sudo pip install django django_rest_framework
-```
-```
+sudo pip install -r requirements.txt
 ```
 * to start server
 

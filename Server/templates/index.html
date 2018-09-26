@@ -4,6 +4,7 @@
 <textarea id="username"></textarea>
 <button onClick={sendUsername()}>Submit username</button>
 
+
 <script>
     function sendQuestion() {
         fetch('/send_question/',
@@ -17,13 +18,13 @@
                 }),
         }).then(function(result) {
             if(!result.ok) {
+                console.log(result)
                 throw Error('Bad data input')
             }
-        }).then(function(result){
-            console.log(result)
         }).catch(function(error) {
             alert(error)
         })
+
     }
 
     function sendUsername() {

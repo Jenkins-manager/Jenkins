@@ -1,3 +1,7 @@
+"""
+    Setup file for exporting the server module
+"""
+
 import setuptools
 setuptools.setup(
     name="Jserver",

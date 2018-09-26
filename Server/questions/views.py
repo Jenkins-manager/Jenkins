@@ -17,7 +17,7 @@ def get_questions(_):
     serializer = RequestProcessor.get_questions(QuestionSerializer, Question)
     return Response(serializer.data)
 
-@api_view(['post'])
+@api_view(['POST', 'GET'])
 def send_question(request):
     request_data = RequestProcessor.check_request(request.data, Question)
     try:
