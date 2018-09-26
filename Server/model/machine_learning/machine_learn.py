@@ -21,7 +21,7 @@ class MachineLearn(threading.Thread):
         threading.Thread.__init__(self)
         self.question = question
         self.answer = None
-        self.value_set = [1.00, 2.00, 3.00, 4.00]
+        self.value_set = [4.00, 3.00, 2.00, 1.00]
 
     def run(self):
         print("starting training thread...")

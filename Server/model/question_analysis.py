@@ -51,7 +51,7 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def question_destroy(question):
         q_arr = question.split()
-        return map(lambda w: w.lower(), list(filter(lambda w : len(w) > 3, q_arr)))
+        return map(lambda w: w.lower(), list(filter(lambda w : len(w) > 2, q_arr)))
 
     @staticmethod
     def non_keywords_list():
