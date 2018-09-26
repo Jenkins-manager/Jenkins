@@ -30,4 +30,4 @@ class TestClass(object):
         assert RequestProcessor.process_request(1, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
 
     def test_user_can_ask_question_and_get_stored_answer(self):
-        assert RequestProcessor.process_request(4, Answer) == "Your name is Daniel"
+        assert RequestProcessor.process_request(4, Answer) == "Your name is Hello"

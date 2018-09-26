@@ -2,6 +2,7 @@ import django
 django.setup()
 from questions.models import Question
 from answers.models import Answer
+from users.models import User
 
 def set_questions():
     return [{'body': 'What time is it?', 'address': 1},
@@ -16,6 +17,16 @@ def set_answers():
             {'body': "AnswerProcessor.getDate()", 'address': 3},
             {'body': "AnswerProcessor.getTime()", 'address': 4},
             {'body': "AnswerProcessor.getLocation()", 'address': 5}]
+
+def set_usernames():
+    return [{'username': 'Daniel'}]
+
+def add_usernames():
+    for i in range(len(set_usernames())):
+        u1 = User(
+            username=set_usernames()[i]['username']
+            )
+        u1.save()
 
 def add_questions():
     for i in range(len(set_questions())):
@@ -37,5 +48,6 @@ def add_answers():
 def add_data():
     add_questions()
     add_answers()
+    add_usernames()
 
 add_data()
