@@ -1,17 +1,5 @@
 {
-<<<<<<< HEAD
   "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer": true, 
   "tests/test_file_processor.py::TestClass::()::test_write_file_throws_with_invalid_path": true, 
-  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_dosent_rmove_keyword": true, 
-  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_removes_correctly": true
-=======
-  "tests/features/test_question_and_answers.py::TestClass": true, 
-  "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer": true, 
-  "tests/test_answer_processor.py::TestClass": true, 
-  "tests/test_file_processor.py::TestClass::()::test_read_file_test_file": true, 
-  "tests/test_file_processor.py::TestClass::()::test_read_file_throws_when_invalid_file": true, 
-  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_dosent_rmove_keyword": true, 
-  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_removes_correctly": true, 
-  "tests/test_request_processor.py::TestClass": true
->>>>>>> 54fbf8fc902fc6507d042634bdb0e8c369c839c2
+  "tests/test_question_analysis.py::TestCLass::()::test_match_keyword_to_address_sucess": true
 }

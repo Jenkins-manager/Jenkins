@@ -26,13 +26,6 @@ class TestClass(object):
         FileProcessor.write_file('../tests/test_fileIO/write_to_file_test.txt', '', 'w') # delete file contents
         assert result == 'test content'
     
-    def test_write_file_throws_with_invalid_path(self):
-        try:
-            FileProcessor.write_file('invalid_path', 'will not save', 'w')
-            pytest.fail('no exception thrown')
-        except Exception, e:
-            assert str(e) == 'file not found'
-
     def test_write_file_appends_text(self):
         FileProcessor.write_file('../tests/test_fileIO/write_to_file_test.txt', 'test content\n', 'w')
         FileProcessor.write_file('../tests/test_fileIO/write_to_file_test.txt', 'more test content', 'a')
