@@ -26,6 +26,24 @@ export default class App extends React.Component {
     const {questions, text} = this.state;
     questions.push({text});
     this.setState({questions});
+    fetch('/send_question/',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                    body: document.getElementById('textQ').value,
+                }),
+        }).then(function(result) {
+            if(!result.ok) {
+                console.log(result)
+                throw Error('Bad data input')
+            }
+        }).catch(function(error) {
+            alert(error)
+        })
+
   }
 
   getAnswer() {
