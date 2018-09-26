@@ -1,7 +1,9 @@
 {
   "tests/1_test.py::test_answer": true, 
-  "tests/features/test_question_and_answers.py::TestClass::()::test_answer_can_be_fetched_and_excecuted": true, 
-  "tests/features/test_question_and_answers.py::TestClass::()::test_program_can_receive_question_and_pick_answer_correctly": true, 
+  "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer": true, 
+  "tests/test_answer_processor.py::TestClass::()::test_get_weather": true, 
   "tests/test_request_processor.py::TestClass::()::test_convert_answer": true, 
-  "tests/test_request_processor.py::TestClass::()::test_get_answer": true
+  "tests/test_request_processor.py::TestClass::()::test_convert_answer_current_date": true, 
+  "tests/test_request_processor.py::TestClass::()::test_convert_answer_current_time": true, 
+  "tests/test_request_processor.py::TestClass::()::test_get_answer_invalid_answer": true
 }

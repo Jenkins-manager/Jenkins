@@ -25,11 +25,20 @@ class TestClass(object):
         assert RequestProcessor.check_request({'body': 'fake question'}, Question) == False 
     
     def test_get_answer(self):
-        assert RequestProcessor.get_answer(1, Answer).body == 'AnswerProcessor.getName()'
+        assert RequestProcessor.get_answer(4, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
+    
+    # exception throwing tests
 
-    def test_convert_answer_current_time(self):
-        assert RequestProcessor.convert_answer("strftime(\"%H:%M:%S\", gmtime())") == strftime("%H:%M:%S", gmtime())
-    
-    def test_convert_answer_current_date(self):
-        assert RequestProcessor.convert_answer("strftime(\"%Y-%m-%d\", gmtime())") == strftime("%Y-%m-%d", gmtime())
-    
+    def test_process_request_bad_question_address(self):
+        try:
+            RequestProcessor.process_request(-1, Answer)
+            fail("no excetion thrown")
+        except Exception, e:
+            assert True
+
+    def test_get_answer_invalid_answer(self):
+        try:
+            RequestProcessor.get_answer(400, Answer)
+            fail("no exception thrown")
+        except Exception, e:
+            assert e == 'Answer matching query does not exist.'

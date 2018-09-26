@@ -22,3 +22,4 @@ def send_question(request):
         return Response({'message': 'new data', 'data': request.data})
     except:
         return Response(status=500, data='Empty Question')
+        
