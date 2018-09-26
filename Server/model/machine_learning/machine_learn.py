@@ -1,10 +1,7 @@
 """
     Machine Learning class
 """
-from __future__ import absolute_import, division, print_function
 
-import os
-import sys
 import tensorflow as tf
 from tensorflow import keras
 import threading

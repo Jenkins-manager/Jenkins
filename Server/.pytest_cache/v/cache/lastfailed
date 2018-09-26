@@ -4,12 +4,21 @@
   "tests/features/test_question_and_answers.py::TestClass::()::test_answer_can_be_fetched_and_excecuted": true, 
   "tests/features/test_question_and_answers.py::TestClass::()::test_program_can_receive_question_and_pick_answer_correctly": true, 
   "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer": true, 
+<<<<<<< HEAD
   "tests/machine_learning_tests/test_machine_learn.py::TestClass": true, 
   "tests/test_answer_processor.py::TestClass::()::test_get_weather": true, 
   "tests/test_question_analysis.py::TestCLass::()::test_question_destroy_can_break_quewtion_into_words": true, 
   "tests/test_request_processor.py::TestClass": true, 
   "tests/test_request_processor.py::TestClass::()::test_check_request_no_throw_with_vaid_input": true, 
   "tests/test_request_processor.py::TestClass::()::test_check_request_returns_correct_address": true, 
+=======
+  "tests/test_file_processor.py::TestClass::()::test_file_can_read_test_file": true, 
+  "tests/test_file_processor.py::TestClass::()::test_read_file_test_file": true, 
+  "tests/test_file_processor.py::TestClass::()::test_read_file_throws_when_invalid_file": true, 
+  "tests/test_question_analysis.py::TestCLass::()::test_question_destroy_can_break_quewtion_into_words": true, 
+  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_dosent_rmove_keyword": true, 
+  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_removes_correctly": true, 
+>>>>>>> 0c11600e243b549a8b96e6a64e42b6fad3bdbbe1
   "tests/test_request_processor.py::TestClass::()::test_convert_answer": true, 
   "tests/test_request_processor.py::TestClass::()::test_convert_answer_current_date": true, 
   "tests/test_request_processor.py::TestClass::()::test_convert_answer_current_time": true, 

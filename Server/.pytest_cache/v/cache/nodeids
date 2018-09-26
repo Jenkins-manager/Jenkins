@@ -1,9 +1,20 @@
 [
   "tests/test_answer_processor.py::TestClass::()::test_getTime", 
   "tests/test_answer_processor.py::TestClass::()::test_getDate", 
+<<<<<<< HEAD
   "tests/test_answer_processor.py::TestClass::()::test_getWeather", 
   "tests/test_answer_processor.py::TestClass::()::test_getLocation", 
   "tests/test_question_analysis.py::TestCLass::()::test_question_destroy_can_break_quewtion_into_words", 
+=======
+  "tests/test_answer_processor.py::TestClass::()::test_get_weather", 
+  "tests/test_file_processor.py::TestClass::()::test_read_file_test_file", 
+  "tests/test_file_processor.py::TestClass::()::test_read_file_throws_when_invalid_file", 
+  "tests/test_question_analysis.py::TestCLass::()::test_question_destroy_can_break_question_into_words", 
+  "tests/test_question_analysis.py::TestCLass::()::test_question_destroy_with_no_question", 
+  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_removes_correctly", 
+  "tests/test_question_analysis.py::TestCLass::()::test_remove_non_keywords_dosent_rmove_keyword", 
+  "tests/test_question_analysis.py::TestCLass::()::test_non_keywords_list", 
+>>>>>>> 0c11600e243b549a8b96e6a64e42b6fad3bdbbe1
   "tests/test_request_processor.py::TestClass::()::test_check_request_no_throw_with_vaid_input", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_returns_correct_address", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_no_input", 
