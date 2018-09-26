@@ -26,7 +26,8 @@ class QuestionAnalysis():
     @staticmethod
     def match_keyword_to_address(q_arr):
         keyword_list = QuestionAnalysis.get_question_keywords()
-        # return list(filter(lambda w: ))
+        matched_word =  ''.join(filter(lambda w: w in keyword_list.keys(), q_arr ))
+        return None if matched_word == '' else keyword_list[matched_word]
 
     @staticmethod
     def get_question_keywords():
