@@ -43,9 +43,11 @@ class QuestionAnalysis(threading.Thread):
             self.address = match
             return match
         
-        print("finished question thread with no result")
+        print("finished question thread with no result, picking random response...")
 
         # third stage
+        return 'funny wuestion'
+
 
     @staticmethod
     def question_destroy(question):
