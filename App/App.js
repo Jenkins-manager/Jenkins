@@ -29,12 +29,13 @@ export default class App extends React.Component {
       })
       .then(function(result) {
         if(!result.ok) {
-          throw Error('Bad data input')
+          answers.push('What?');
+          self.setState({answers});
         }
         return result.json();
       })
       .then(function(answerJson){
-        answers.push(answerJson.answer)
+        answers.push(answerJson.answer);
         self.setState({answers});
       })
       .catch(function(error) {
