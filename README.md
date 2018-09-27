@@ -29,6 +29,13 @@ npm install -g react-native-cli
 ```
 sudo pip install -r requirements.txt
 ```
+```
+python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.3.0-py3-none-any.whl
+```
+* This adds the settings to your path
+```
+export DJANGO_SETTINGS_MODULE=jenkinsServer.settings
+```
 * to start server
 
 ```
@@ -39,28 +46,36 @@ cd Server
 python manage.py runserver
 ```
 * to view front end react on ios
+
+* ensure x-code is installed, if not visit the Apple Store to download
+
+* in another terminal
 ```
-ensure x-code is installed
+cd path/Jenkins/Server
 ```
 ```
 react-native run-ios
 ```
-* when mock iphone appears, open evgie app
+* when mock iPhone appears, open evgie app
 
+* enjoy
 
 *This is our 2-week final project for Makers; 17 Sept 2018 - 28 Sept 2018*  
 
 ## Testing
 
-The unit testing for this project is done in [Pytest](https://docs.pytest.org/en/latest/) to run the testing suite simply navigate to the **Server** directory, then run the following command :
-    python -m pytest tests
-
+The unit testing for this project is done in [Pytest](https://docs.pytest.org/en/latest/) to run the testing suite simply
+```
+cd path/Jenkins/Server
+```
+```
+python -m pytest tests
+```
 you should then see an output like the one below:
 
-    ==================2 passed in 0.03 seconds==================
+    ==================47 passed in 4.56 seconds==================
 
 
 Team members: [Marcus Kerr](https://github.com/MarcusKerr), [Jack Branch](https://github.com/pliantmeerkat), [Daniel den Hartog](https://github.com/velvetsnowman), [Kirtiman Singh](https://github.com/kirtimansingh93), [Cui Li Lim](https://github.com/limcuili)  
 
 [Trello board](https://trello.com/b/jnnwcT3C/jenkins).
-
