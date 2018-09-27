@@ -1,6 +1,9 @@
 {
-  "tests/features/test_question_and_answers.py::TestClass::()::test_program_can_receive_question_and_pick_answer_correctly": true, 
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output": true, 
   "tests/test_answer_processor.py::TestClass::()::test_getName": true, 
-  "tests/test_question_analysis.py::TestClass::()::test_match_keywords_using_spaced_words": true
+  "tests/test_question_analysis.py::TestClass::()::test_match_keywords_using_spaced_words": true, 
+  "tests/test_question_analysis.py::TestClass::()::test_process_user_question_using_known_keyword": true, 
+  "tests/test_question_analysis.py::TestClass::()::test_process_user_question_using_similar_keyword": true, 
+  "tests/test_request_processor.py::TestClass::()::test_check_request_no_throw_with_vaid_input": true, 
+  "tests/test_request_processor.py::TestClass::()::test_check_request_returns_correct_address": true
 }

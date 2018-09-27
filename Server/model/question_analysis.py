@@ -21,6 +21,12 @@ class QuestionAnalysis(threading.Thread):
 
     def run(self):
         print("starting question thread")
+        # pre prep stage
+        scanning_thread = self.ScanningClass(self.question)
+        scanning_thread.start()
+
+        # print self.scanning_thread.scanned_answer
+
         # preparation stage
         processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
         
@@ -50,6 +56,7 @@ class QuestionAnalysis(threading.Thread):
         # third stage
         return None
 
+    
 
     @staticmethod
     def question_destroy(question):
@@ -109,3 +116,18 @@ class QuestionAnalysis(threading.Thread):
         thread.join()
         return thread.address
         
+    class ScanningClass(threading.Thread):
+        def __init__self(self, question):
+            threading.Thread.__init__self
+            self.question = question
+            self.scanned_answer = None
+        
+        def run(self):
+            print("starting scanning thread")
+            self.scanned_answer = QuestionAnalysis.ScanningClass.scan_for_keywords(self.question)
+            print(self.scanned_answer)
+
+        @staticmethod
+        def scan_for_keywords(question):
+            keyword_list = QuestionAnalysis.get_question_keywords()
+            return filter(lambda s: s in question, keyword_list)

@@ -24,7 +24,8 @@ class RequestProcessor:
             return False
         else:
             try:
-                question_address = QuestionAnalysis.process_user_question(request['body'])         
+                question_address = QuestionAnalysis.process_user_question(request['body'])  
+                print(question_address)       
                 if question_address != None:
                     return True, question_address
                 else:
