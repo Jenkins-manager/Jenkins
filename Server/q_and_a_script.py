@@ -45,8 +45,8 @@ def add_to_training_set(q_address, a_address):
     FileProcessor.write_file('machine_learning/data/output_set.jenk', str(keywords) ,'w')
 
 def q_and_a_creation(q_body, a_body):
-    q_new = Question(q_body, 0)
-    a_new = Answer(a_body, 0)
+    q_new = Question(q_body)
+    a_new = Answer(a_body)
     q_new.save()
     a_new.save()
     q_new = Question.objects.get(body = q_body)
@@ -65,34 +65,34 @@ print("This is the runner for adding questions and answers to the application\n"
       "Enter a question to begin:")
 
 while True:
-    try:
-        command = sys.stdin.readline().rstrip()
-        if command == "QQQ":
-            break
-        elif command == "HELP!":
-            print(help_string)
-  
-        q_body = command
-        print("Now enter an answer please:")
-        command = sys.stdin.readline().rstrip()
-        a_body = command
-        print("now enter your keywords:")
-        command = sys.stdin.readline().rstrip()
-        keywords = command
-
-        if q_body == "" or a_body == "" or keywords == "":
-            raise "you must enter all three fields to continue"
-        
-        address_pair = q_and_a_creation(q_body, a_body)
-        write_keyword_data(address_pair[0], keywords)
-        add_to_training_set(address_pair[0], address_pair[1])
-
-        print("saved sucessfully")
+    # try:
+    command = sys.stdin.readline().rstrip()
+    if command == "QQQ":
         break
+    elif command == "HELP!":
+        print(help_string)
+        next
 
-    except Exception, e:
-        print("an error occured, resetting files..")
-        revert_data_to_reset()
-        print("your error message is:")
-        print(str(e))
-        print("\nplease try again")
+    q_body = command
+    print("Now enter an answer please:")
+    command = sys.stdin.readline().rstrip()
+    a_body = command
+    print("now enter your keywords:")
+    command = sys.stdin.readline().rstrip()
+    keywords = command
+
+    if q_body == "" or a_body == "" or keywords == "":
+        raise "you must enter all three fields to continue"
+    
+    address_pair = q_and_a_creation(q_body, a_body)
+    write_keyword_data(address_pair[0], keywords)
+    add_to_training_set(address_pair[0], address_pair[1])
+
+    print("saved sucessfully")
+    break
+
+    # except Exception, e:
+    #     print("an error occured, resetting files..")
+    #     revert_data_to_reset()
+    #     print("your error message is:")
+    #     raise e
