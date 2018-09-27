@@ -49,6 +49,7 @@ export default class App extends React.Component {
           alert(error);
         });
   }
+  
 
   getAnswer() {
     const {answers, text} = this.answers;
