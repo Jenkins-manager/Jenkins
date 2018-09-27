@@ -37,8 +37,11 @@ export default class App extends React.Component {
           }
           return result.json();
         }).then(function(answerJson){
-          answers.push({answerJson});
-          console.log(answers)
+          return answers.push({answerJson});
+          // console.log(answers)
+
+        }).then(function (answersArr){
+          addAnswer(answerArr);
         }).catch(function(error) {
           alert(error);
         });
@@ -52,7 +55,8 @@ export default class App extends React.Component {
           this.state.questions.map((question, i) => {
             return [
               <Question key={i} question={question}/>,
-              <Answer key={i+1} answer={this.state.answers[i]}/>
+              console.log(this.state.answers),
+              <Answer answer={this.state.answers[i]}/>
             ]
           })
         }
