@@ -33,9 +33,15 @@ def revert_data_to_reset():
     FileProcessor.write_file('machine_learning/data/output_set.jenk', str(org_in_set) ,'w')
 
 def write_keyword_data(q_keyword, q_address):
+    key_arr = q_keyword.split(" ")
     keywords = org_key_set
-    keywords[q_keyword] = q_address
-    FileProcessor.write_file('key_words/keywords.jenk', str(keywords) ,'w')
+    try:
+        for word in key_arr:
+            keywords[word] = q_address
+    except Exception, e:  
+        print(str(e))
+    finally:
+        FileProcessor.write_file('key_words/keywords.jenk', str(keywords) ,'w')
 
 def add_to_training_set(q_address, a_address):
     training_set = org_train_set.split(",")
