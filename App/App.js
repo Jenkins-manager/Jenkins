@@ -42,10 +42,9 @@ export default class App extends React.Component {
           }
           return result.json();
         }).then(function(answerJson) {
-          answers.push((JSON.stringify(answerJson)));
-          alert(JSON.stringify(answerJson));
-          // alert(this.state.answers);
-          //render an answer
+          // answers.push((JSON.stringify(answerJson)));
+          answers.push(answerJson);
+          console.log(answers);
         }).catch(function(error) {
           alert(error);
         });
