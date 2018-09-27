@@ -21,6 +21,7 @@ export default class App extends React.Component {
     questions.push({text});
     this.setState({questions});
     // this.setState({answer: '400'});
+    self = this;
     fetch('http://localhost:8000/send_question/',
       {
         method: 'POST',
@@ -30,6 +31,7 @@ export default class App extends React.Component {
         body: JSON.stringify({
           body: this.state.text,
         }),
+        
         }).then(function(result) {
           if(!result.ok) {
             alert(result)
@@ -37,14 +39,16 @@ export default class App extends React.Component {
           }
           return result.json();
         }).then(function(answerJson){
-          return answers.push({answerJson});
-          // console.log(answers)
-
-        }).then(function (answersArr){
-          addAnswer(answerArr);
-        }).catch(function(error) {
+          answers.push(answerJson.answer)
+          self.setState({answers});
+        })
+        .catch(function(error) {
           alert(error);
         });
+  }
+
+  rendAns(i){
+    return <Answer answer={this.state.answers[i]} />
   }
 
   render() {
@@ -55,16 +59,13 @@ export default class App extends React.Component {
           this.state.questions.map((question, i) => {
             return [
               <Question key={i} question={question}/>,
-              console.log(this.state.answers),
-              <Answer answer={this.state.answers[i]}/>
+              // console.log(this.state.answers),
+              // <Answer />
+              this.rendAns(i)
             ]
           })
         }
-        {/* {
-          this.state.answers.map((answer, i) => {
-            return (<Answer key={i} answer={answer}/>)
-          })
-        } */}
+        { }
         <View style={styles.inputAndSendContainer}>
           <TextInput
             style={styles.inputBox}
