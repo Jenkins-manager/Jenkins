@@ -16,16 +16,11 @@ export default class App extends React.Component {
     };
   }
 
-  componetDidMount() {
-    //. first ask user question
-    // They respond with name
-    // sa
-  }
-
   sendQuestion() {
     const {questions, text, answers} = this.state;
     questions.push({text});
     this.setState({questions});
+    // this.setState({answer: '400'});
     fetch('http://localhost:8000/send_question/',
       {
         method: 'POST',
@@ -41,21 +36,13 @@ export default class App extends React.Component {
             throw Error('Bad data input')
           }
           return result.json();
-        }).then(function(answerJson) {
-          // answers.push((JSON.stringify(answerJson)));
-          answers.push(answerJson);
-          console.log(answers);
+        }).then(function(answerJson){
+          answers.push({answerJson});
+          console.log(answers)
         }).catch(function(error) {
           alert(error);
         });
   }
-  
-
-  getAnswer() {
-    const {answers, text} = this.answers;
-    answers.push({text});
-    this.setState({answers});
-  } 
 
   render() {
     return (
@@ -63,11 +50,17 @@ export default class App extends React.Component {
       <Text style={styles.title}>Jenkins</Text>
         {
           this.state.questions.map((question, i) => {
-            return (
-              <Question key={i} question={question}/>
-           )
+            return [
+              <Question key={i} question={question}/>,
+              <Answer key={i+1} answer={this.state.answers[i]}/>
+            ]
           })
         }
+        {/* {
+          this.state.answers.map((answer, i) => {
+            return (<Answer key={i} answer={answer}/>)
+          })
+        } */}
         <View style={styles.inputAndSendContainer}>
           <TextInput
             style={styles.inputBox}
