@@ -31,17 +31,12 @@ org_q_list = map(lambda w: ast.literal_eval(w), org_q_list)
 org_a_list = FileProcessor.read_file('db/answer_list.jenk').split('|')
 org_a_list = map(lambda w: ast.literal_eval(w), org_a_list)
 
-if  org_q_list != ([{'body': 'What time is it?', 'address': 1}, {'body': "What is today's date?", 'address': 2}, {'body': 'What is the weather?', 'address': 3}, {'body': 'What is my name?', 'address': 4}]):
-    print(org_q_list)
-    raise Exception("error while opening questions file")
-
-if  org_a_list != ([{'body': 'AnswerProcessor.getName()', 'address': 1}, {'body': 'AnswerProcessor.getWeather()', 'address': 2}, {'body': 'AnswerProcessor.getDate()', 'address': 3}, {'body': 'AnswerProcessor.getTime()', 'address': 4}]):
-    raise Exception("error while opening answers file")
-
 def revert_data_to_reset():
     FileProcessor.write_file('key_words/keywords.jenk', str(org_key_set) ,'w')
     FileProcessor.write_file('machine_learning/data/value_set.jenk', str(org_train_set) ,'w')
     FileProcessor.write_file('machine_learning/data/output_set.jenk', str(org_in_set) ,'w')
+    FileProcessor.write_file('db/question_list.jenk', str(org_q_list), 'w')
+    FileProcessor.write_file('db/answer_list.jenk', str(org_a_list), 'w')
 
 def write_keyword_data(q_keyword, q_address):
     key_arr = q_keyword.split(" ")
@@ -54,7 +49,7 @@ def write_keyword_data(q_keyword, q_address):
     finally:
         FileProcessor.write_file('key_words/keywords.jenk', str(keywords) ,'w')
 
-def add_new_data_to_db_files(a_new, q_new):
+def add_new_data_to_db_files(q_new, a_new):
     q_new_list = org_q_list
     a_new_list = org_a_list
     q_new_list.append({'body': q_new.body, 'address': q_new.address})
@@ -111,7 +106,6 @@ while True:
         address_pair = q_and_a_creation(q_body, a_body)
         write_keyword_data(keywords, address_pair[0])
         add_to_training_set(address_pair[0], address_pair[1])
-        raise Exception("tesst exception")
         print("saved sucessfully")
         break
 
