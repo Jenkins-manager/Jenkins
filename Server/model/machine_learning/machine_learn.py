@@ -25,6 +25,8 @@ class MachineLearn(threading.Thread):
         try:
             self.value_set = FileProcessor.read_file('./machine_learning/data/value_set.jenk').split(',')
             self.value_set = map(float, self.value_set)
+            self.desired_list = FileProcessor.read_file('./machine_learning/data/output_set.jenk').split(',')
+            self.desired_list = map(float, self.desired_list)
             print(self.value_set)
         except Exception, e:
             raise e
@@ -49,7 +51,7 @@ class MachineLearn(threading.Thread):
         index = self.value_set.index(self.question)
         tf.reset_default_graph()
         model = TrainingModel(self.value_set)
-        desired_list = [4.00, 3.00, 2.00, 1.00]
+        desired_list = self.desired_list
         num_examples = 10000
         num_epochs = 70
         inputs = tf.random_normal(shape=[num_examples])
