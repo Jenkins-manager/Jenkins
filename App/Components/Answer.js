@@ -6,7 +6,6 @@ class Answer extends Component {
   render() {
     return(
       <View style={styles.answerBox}>
-          {/* <Text>{this.props.answer}</Text> */}
           <Text>{this.props.answer}</Text>
       </View>
     );

@@ -8,7 +8,6 @@ import Answer from './Components/Answer';
 export default class App extends React.Component {
   constructor() {
     super();
-
     this.state = { 
       text: '', 
       questions: [],
@@ -20,35 +19,31 @@ export default class App extends React.Component {
     const {questions, text, answers} = this.state;
     questions.push({text});
     this.setState({questions});
-    // this.setState({answer: '400'});
     self = this;
-    fetch('http://localhost:8000/send_question/',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          body: this.state.text,
-        }),
-        
-        }).then(function(result) {
-          if(!result.ok) {
-            alert(result)
-            throw Error('Bad data input')
-          }
-          return result.json();
-        }).then(function(answerJson){
-          answers.push(answerJson.answer)
-          self.setState({answers});
-        })
-        .catch(function(error) {
-          alert(error);
-        });
+    fetch('http://localhost:8000/send_question/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ body: this.state.text }),
+      })
+      .then(function(result) {
+        if(!result.ok) {
+          throw Error('Bad data input')
+        }
+        return result.json();
+      })
+      .then(function(answerJson){
+        answers.push(answerJson.answer)
+        self.setState({answers});
+      })
+      .catch(function(error) {
+        alert(error);
+      });
   }
 
-  rendAns(i){
-    return <Answer answer={this.state.answers[i]} />
+  renderAnswer(i){
+    return <Answer key={`a${i}`}answer={this.state.answers[i]} />
   }
 
   render() {
@@ -59,13 +54,10 @@ export default class App extends React.Component {
           this.state.questions.map((question, i) => {
             return [
               <Question key={i} question={question}/>,
-              // console.log(this.state.answers),
-              // <Answer />
-              this.rendAns(i)
+              this.renderAnswer(i)
             ]
           })
         }
-        { }
         <View style={styles.inputAndSendContainer}>
           <TextInput
             style={styles.inputBox}
