@@ -55,11 +55,12 @@ def write_keyword_data(q_keyword, q_address):
         FileProcessor.write_file('key_words/keywords.jenk', str(keywords) ,'w')
 
 def add_new_data_to_db_files(a_new, q_new):
-    q_new_list = org_q_list.append(q_new)
-    a_new_list = org_a_list.append(a_new)
-    print(q_new_list)
-    # FileProcessor.write_file('db/question_list.jenk', q_new_list, 'w')
-    # FileProcessor.write_file('db/answer_list.jenk', a_new_list, 'w')
+    q_new_list = org_q_list
+    a_new_list = org_a_list
+    q_new_list.append({'body': q_new.body, 'address': q_new.address})
+    a_new_list.append({'body': a_new.body, 'address': a_new.address})
+    FileProcessor.write_file('db/question_list.jenk', "|".join(str(x) for x in q_new_list), 'w')
+    FileProcessor.write_file('db/answer_list.jenk', "|".join(str(x) for x in a_new_list), 'w')
 
 def add_to_training_set(q_address, a_address):
     training_set = org_train_set.split(",")
