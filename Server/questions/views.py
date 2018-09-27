@@ -27,9 +27,9 @@ def send_question(request):
     request_data = RequestProcessor.check_request(request.data, Question)
     try:
         answer_string = RequestProcessor.process_request(request_data[1], Answer)
-        print(answer_string)
     except Exception, e:
         answer_string = RequestProcessor.get_funny_response()
-        print(answer_string)
+        print(str(e))
     finally:
+        print(answer_string)
         return JsonResponse({'answer': answer_string})

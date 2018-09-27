@@ -40,6 +40,7 @@ def revert_data_to_reset():
 
 def write_keyword_data(q_keyword, q_address):
     key_arr = q_keyword.split(" ")
+    key_arr = map(lambda w: w.replace('_', ' '),key_arr)
     keywords = org_key_set
     try:
         for word in key_arr:

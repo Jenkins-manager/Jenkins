@@ -20,6 +20,7 @@
   "tests/test_question_analysis.py::TestClass::()::test_match_keyword_to_address_sucess", 
   "tests/test_question_analysis.py::TestClass::()::test_match_keywords_fail", 
   "tests/test_question_analysis.py::TestClass::()::test_match_keywords_using_two_keywords", 
+  "tests/test_question_analysis.py::TestClass::()::test_match_keywords_using_spaced_words", 
   "tests/test_question_analysis.py::TestClass::()::test_compare_keyword_to_list", 
   "tests/test_question_analysis.py::TestClass::()::test_compare_keyword_to_list_should_fail", 
   "tests/test_question_analysis.py::TestClass::()::test_compare_keyword_to_list_using_two_similar_words", 
