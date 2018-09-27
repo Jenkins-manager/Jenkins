@@ -12,7 +12,7 @@ class TestClass(object):
     training_set = [1.00, 2.00, 3.00, 4.00]
 
     def test_can_load_value_set(self):
-        assert TestClass.machine_learn.value_set == TestClass.training_set
+        assert  TestClass.training_set in TestClass.machine_learn.value_set
 
     def test_train_network(self):
         assert TestClass.machine_learn.train_network() == 3

@@ -83,7 +83,6 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def add_word_to_keyword_list(word, address, keywords):
         keywords[word] = address
-        print(keywords)
         FileProcessor.write_file('./key_words/keywords.jenk', str(keywords), 'w')
         return keywords
     
