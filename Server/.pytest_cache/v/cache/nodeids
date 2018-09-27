@@ -20,6 +20,7 @@
   "tests/test_question_analysis.py::TestClass::()::test_match_keyword_to_address_sucess", 
   "tests/test_question_analysis.py::TestClass::()::test_match_keywords_fail", 
   "tests/test_question_analysis.py::TestClass::()::test_match_keywords_using_two_keywords", 
+  "tests/test_question_analysis.py::TestClass::()::test_match_keywords_using_spaced_words", 
   "tests/test_question_analysis.py::TestClass::()::test_compare_keyword_to_list", 
   "tests/test_question_analysis.py::TestClass::()::test_compare_keyword_to_list_should_fail", 
   "tests/test_question_analysis.py::TestClass::()::test_compare_keyword_to_list_using_two_similar_words", 
@@ -41,6 +42,8 @@
   "tests/features/test_question_and_answers.py::TestClass::()::test_answer_can_be_fetched_and_excecuted", 
   "tests/features/test_question_and_answers.py::TestClass::()::test_program_can_receive_question_and_pick_answer_correctly", 
   "tests/features/test_question_and_answers.py::TestClass::()::test_user_can_ask_question_and_get_stored_answer", 
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_can_load_value_set", 
+  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_can_load_desired_set", 
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_train_network", 
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_thread_start"
 ]

@@ -5,6 +5,8 @@
 
 import ast
 import threading
+import random
+
 from difflib import SequenceMatcher
 from thesaurus import Word
 
@@ -19,9 +21,11 @@ class QuestionAnalysis(threading.Thread):
 
     def run(self):
         print("starting question thread")
+
+        # print self.scanning_thread.scanned_answer
+
         # preparation stage
         processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
-        keyword_list = QuestionAnalysis.get_question_keywords()
         
         # initial match
         match = QuestionAnalysis.match_keyword_to_address(processed_question)
@@ -44,9 +48,12 @@ class QuestionAnalysis(threading.Thread):
             self.address = match
             return match
         
-        print("finished question thread with no result")
+        print("finished question thread with no result, picking random response...")
 
         # third stage
+        return None
+
+    
 
     @staticmethod
     def question_destroy(question):
@@ -83,7 +90,6 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def add_word_to_keyword_list(word, address, keywords):
         keywords[word] = address
-        print(keywords)
         FileProcessor.write_file('./key_words/keywords.jenk', str(keywords), 'w')
         return keywords
     
@@ -96,11 +102,31 @@ class QuestionAnalysis(threading.Thread):
             if matches != []:
                 QuestionAnalysis.add_word_to_keyword_list(word, keyword_list[matches[0]], keyword_list)
                 return keyword_list[matches[0]]
+    @staticmethod
+    def get_funny_response():
+        return random.choice(FileProcessor.read_file('./key_words/responses.jenk').split('|'))
 
     @staticmethod
     def process_user_question(question):
         thread = QuestionAnalysis(question)
+        scanning_thread = QuestionAnalysis.ScanningClass(question)
+        scanning_thread.start()
         thread.start()
         thread.join()
         return thread.address
         
+    class ScanningClass(threading.Thread):
+        def __init__(self, question):
+            threading.Thread.__init__(self)
+            self.question = question
+            self.scanned_answer = None
+        
+        def run(self):
+            print("starting scanning thread")
+            self.scanned_answer = QuestionAnalysis.ScanningClass.scan_for_keywords(self.question)
+            print(self.scanned_answer)
+
+        @staticmethod
+        def scan_for_keywords(question):
+            keyword_list = QuestionAnalysis.get_question_keywords()
+            return filter(lambda s: s in question, keyword_list)

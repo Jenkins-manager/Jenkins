@@ -1,12 +1,13 @@
 """
     Machine Learning class
 """
-
+import numpy
+import threading
 import tensorflow as tf
 from tensorflow import keras
-import threading
+
 from model.machine_learning.training_model import TrainingModel
-import numpy
+from model.file_processor import FileProcessor
 # import matplotlib.pyplot as plt
 
 tf.enable_eager_execution()
@@ -14,19 +15,21 @@ tf.enable_eager_execution()
 
 class MachineLearn(threading.Thread):
 
-    VALUES_MIN = 1 # always 1
-    VALUES_MAX = 4 # get all answers then see length of array
-
     def __init__(self, question):
         threading.Thread.__init__(self)
         self.question = question
         self.answer = None
-        self.value_set = [4.00, 3.00, 2.00, 1.00]
+        try:
+            self.value_set = FileProcessor.read_file('./machine_learning/data/value_set.jenk').split(',')
+            self.value_set = map(float, self.value_set)
+            self.desired_list = FileProcessor.read_file('./machine_learning/data/output_set.jenk').split(',')
+            self.desired_list = map(float, self.desired_list)
+        except Exception, e:
+            raise e
 
     def run(self):
         print("starting training thread...")
         self.train_network()
-        print(self.answer)
         print("completed training thread")
 
     def loss(self, predicted_y, desired_y):
@@ -43,7 +46,7 @@ class MachineLearn(threading.Thread):
         index = self.value_set.index(self.question)
         tf.reset_default_graph()
         model = TrainingModel(self.value_set)
-        desired_list = [4.00, 3.00, 2.00, 1.00]
+        desired_list = self.desired_list
         num_examples = 10000
         num_epochs = 70
         inputs = tf.random_normal(shape=[num_examples])

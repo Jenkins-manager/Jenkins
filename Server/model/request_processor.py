@@ -10,6 +10,10 @@ from question_analysis import QuestionAnalysis
 class RequestProcessor:
 
     @staticmethod
+    def get_funny_response():
+        return QuestionAnalysis.get_funny_response()
+
+    @staticmethod
     def get_questions(serializer, question_class):
         questions = question_class.objects.all()
         return serializer(questions, many=True)
@@ -20,7 +24,8 @@ class RequestProcessor:
             return False
         else:
             try:
-                question_address = QuestionAnalysis.process_user_question(request['body'])         
+                question_address = QuestionAnalysis.process_user_question(request['body'])  
+                print(question_address)       
                 if question_address != None:
                     return True, question_address
                 else:
@@ -39,6 +44,9 @@ class RequestProcessor:
     def get_answer(answer_address, answer_class):
         try:
             answer = answer_class.objects.get(address = answer_address)
-            return eval(answer.body)
+            try:
+                return eval(answer.body)
+            except Exception, e:
+                return answer.body
         except Exception, e:
             raise e
