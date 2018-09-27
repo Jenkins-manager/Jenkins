@@ -18,9 +18,6 @@ def set_answers():
     a_arr =  FileProcessor.read_file('db/answer_list.jenk').split('|')
     return map(lambda w: ast.literal_eval(w), a_arr)
 
-def set_usernames():
-    return [{'username': 'Daniel'}]
-
 def add_usernames():
     for i in range(len(set_usernames())):
         u1 = User(

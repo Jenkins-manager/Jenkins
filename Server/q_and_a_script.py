@@ -26,6 +26,17 @@ help_string = ("run this file to create and implmenet a new question" +
 org_train_set = FileProcessor.read_file('machine_learning/data/value_set.jenk')
 org_in_set = FileProcessor.read_file('machine_learning/data/output_set.jenk')
 org_key_set = ast.literal_eval(FileProcessor.read_file('./key_words/keywords.jenk'))
+org_q_list = FileProcessor.read_file('db/question_list.jenk').split('|')
+org_q_list = map(lambda w: ast.literal_eval(w), org_q_list)
+org_a_list = FileProcessor.read_file('db/answer_list.jenk').split('|')
+org_a_list = map(lambda w: ast.literal_eval(w), org_a_list)
+
+if  org_q_list != ([{'body': 'What time is it?', 'address': 1}, {'body': "What is today's date?", 'address': 2}, {'body': 'What is the weather?', 'address': 3}, {'body': 'What is my name?', 'address': 4}]):
+    print(org_q_list)
+    raise Exception("error while opening questions file")
+
+if  org_a_list != ([{'body': 'AnswerProcessor.getName()', 'address': 1}, {'body': 'AnswerProcessor.getWeather()', 'address': 2}, {'body': 'AnswerProcessor.getDate()', 'address': 3}, {'body': 'AnswerProcessor.getTime()', 'address': 4}]):
+    raise Exception("error while opening answers file")
 
 def revert_data_to_reset():
     FileProcessor.write_file('key_words/keywords.jenk', str(org_key_set) ,'w')
@@ -43,6 +54,13 @@ def write_keyword_data(q_keyword, q_address):
     finally:
         FileProcessor.write_file('key_words/keywords.jenk', str(keywords) ,'w')
 
+def add_new_data_to_db_files(a_new, q_new):
+    q_new_list = org_q_list.append(q_new)
+    a_new_list = org_a_list.append(a_new)
+    print(q_new_list)
+    # FileProcessor.write_file('db/question_list.jenk', q_new_list, 'w')
+    # FileProcessor.write_file('db/answer_list.jenk', a_new_list, 'w')
+
 def add_to_training_set(q_address, a_address):
     training_set = org_train_set.split(",")
     input_set = org_in_set.split(",")
@@ -57,6 +75,7 @@ def q_and_a_creation(q_body, a_body):
     length = len(Question.objects.all())
     q_new = Question(body=q_body, address=(length + 1))
     a_new = Answer(body=a_body, address=(length + 1))
+    add_new_data_to_db_files(q_new, a_new)
     q_new.save()
     a_new.save()
     return [q_new.address, a_new.address]
@@ -86,11 +105,12 @@ while True:
         keywords = command
 
         if q_body == "" or a_body == "" or keywords == "":
-            raise "you must enter all three fields to continue"
+            raise Exception("you must enter all three fields to continue")
         
         address_pair = q_and_a_creation(q_body, a_body)
         write_keyword_data(keywords, address_pair[0])
         add_to_training_set(address_pair[0], address_pair[1])
+        raise Exception("tesst exception")
         print("saved sucessfully")
         break
 

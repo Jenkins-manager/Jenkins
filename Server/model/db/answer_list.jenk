@@ -1,1 +1,1 @@
-{"body": "AnswerProcessor.getName()", "address": 1}|{"body": "AnswerProcessor.getWeather()", "address": 2}|{"body": "AnswerProcessor.getDate()", "address": 3}|{"body": "AnswerProcessor.getTime()", "address": 4}|{"body": "AnswerProcessor.getLocation()", "address": 5}
+{'body': 'AnswerProcessor.getName()', 'address': 1}|{'body': 'AnswerProcessor.getWeather()', 'address': 2}|{'body': 'AnswerProcessor.getDate()', 'address': 3}|{'body': 'AnswerProcessor.getTime()', 'address': 4}
