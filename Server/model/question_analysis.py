@@ -21,9 +21,6 @@ class QuestionAnalysis(threading.Thread):
 
     def run(self):
         print("starting question thread")
-        # pre prep stage
-        scanning_thread = self.ScanningClass(self.question)
-        scanning_thread.start()
 
         # print self.scanning_thread.scanned_answer
 
@@ -112,13 +109,15 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def process_user_question(question):
         thread = QuestionAnalysis(question)
+        scanning_thread = QuestionAnalysis.ScanningClass(question)
+        scanning_thread.start()
         thread.start()
         thread.join()
         return thread.address
         
     class ScanningClass(threading.Thread):
-        def __init__self(self, question):
-            threading.Thread.__init__self
+        def __init__(self, question):
+            threading.Thread.__init__(self)
             self.question = question
             self.scanned_answer = None
         
