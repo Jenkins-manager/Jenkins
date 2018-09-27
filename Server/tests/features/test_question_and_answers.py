@@ -21,8 +21,7 @@ class TestClass(object):
     # answer tests
 
     def test_answer_can_be_fetched_and_excecuted(self):
-
-        assert RequestProcessor.get_answer(4, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
+        assert RequestProcessor.get_answer(1, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
 
     # full cycle tests
 

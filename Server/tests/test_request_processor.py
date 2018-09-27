@@ -11,7 +11,7 @@ from answers.models import Answer
 from ..model.request_processor import RequestProcessor
 
 class TestClass(object):
-    
+
     # def test_get_questions(self):
     #     assert RequestProcessor.get_questions(QuestionSerializer, Question).data[0]['body'] == 'What time is it?'
 
@@ -28,7 +28,7 @@ class TestClass(object):
         assert RequestProcessor.check_request({'body': 'fake question'}, Question) == False
 
     def test_get_answer(self):
-        assert RequestProcessor.get_answer(4, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
+        assert RequestProcessor.get_answer(1, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
 
     # exception throwing tests
 

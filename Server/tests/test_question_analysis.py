@@ -38,7 +38,7 @@ class TestClass(object):
         assert QuestionAnalysis.match_keyword_to_address(['name', 'date']) == 1
     
     def test_match_keywords_using_spaced_words(self):
-        assert QuestionAnalysis.match_keyword_to_address(['my name']) == 1
+        assert QuestionAnalysis.match_keyword_to_address(['my name']) == 5
 
     def test_compare_keyword_to_list(self):
         assert QuestionAnalysis.compare_keyword_to_list(['uwotmate', 'dates']) == 3

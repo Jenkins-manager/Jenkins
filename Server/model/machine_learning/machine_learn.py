@@ -30,7 +30,6 @@ class MachineLearn(threading.Thread):
     def run(self):
         print("starting training thread...")
         self.train_network()
-        print(self.answer)
         print("completed training thread")
 
     def loss(self, predicted_y, desired_y):
@@ -45,7 +44,6 @@ class MachineLearn(threading.Thread):
 
     def train_network(self):
         index = self.value_set.index(self.question)
-        print(index)
         tf.reset_default_graph()
         model = TrainingModel(self.value_set)
         desired_list = self.desired_list
