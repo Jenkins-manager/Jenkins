@@ -1,22 +1,22 @@
+import ast
+import logging
+logging.basicConfig()
+
 import django
 django.setup()
 from questions.models import Question
 from answers.models import Answer
 from users.models import User
 
+from model.file_processor import FileProcessor
+
 def set_questions():
-    return [{'body': 'What time is it?', 'address': 1},
-            {'body': "what is today's date?", 'address': 2},
-            {'body': 'What is the weather?', 'address': 3},
-            {'body': 'What is my name?', 'address': 4},
-            {'body': 'Where am I?', 'address': 5}]
+    q_arr =  FileProcessor.read_file('db/question_list.jenk').split('|')
+    return map(lambda w: ast.literal_eval(w), q_arr)
 
 def set_answers():
-    return [{'body': 'AnswerProcessor.getName()', 'address': 1},
-            {'body': 'AnswerProcessor.getWeather()', 'address': 2},
-            {'body': "AnswerProcessor.getDate()", 'address': 3},
-            {'body': "AnswerProcessor.getTime()", 'address': 4},
-            {'body': "AnswerProcessor.getLocation()", 'address': 5}]
+    a_arr =  FileProcessor.read_file('db/answer_list.jenk').split('|')
+    return map(lambda w: ast.literal_eval(w), a_arr)
 
 def set_usernames():
     return [{'username': 'Daniel'}]
@@ -46,8 +46,16 @@ def add_answers():
         a1.save()
 
 def add_data():
-    add_questions()
-    add_answers()
-    add_usernames()
+    logger = logging.getLogger('databaselogger')
+    try:
+        if len(Question.objects.all()) != 0 or len(Answer.objects.all()) != 0:
+            logger.warning('non empty database, clearing data...')
+            Question.objects.all().delete()
+            Answer.objects.all().delete()
+        add_questions()
+        add_answers()
+    except Exception, e:
+        print(str(e))
+
 
 add_data()

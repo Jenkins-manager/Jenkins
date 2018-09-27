@@ -15,9 +15,6 @@ tf.enable_eager_execution()
 
 class MachineLearn(threading.Thread):
 
-    VALUES_MIN = 1 # always 1
-    VALUES_MAX = 4 # get all answers then see length of array
-
     def __init__(self, question):
         threading.Thread.__init__(self)
         self.question = question

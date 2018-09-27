@@ -16,12 +16,12 @@ class QuestionAnalysis(threading.Thread):
         threading.Thread.__init__(self)
         self.question = question
         self.address = None
+        self.keyword_list = QuestionAnalysis.get_question_keywords()
 
     def run(self):
         print("starting question thread")
         # preparation stage
         processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
-        keyword_list = QuestionAnalysis.get_question_keywords()
         
         # initial match
         match = QuestionAnalysis.match_keyword_to_address(processed_question)
@@ -31,7 +31,7 @@ class QuestionAnalysis(threading.Thread):
             return match
         
         # second stage
-        match = QuestionAnalysis.compare_keyword_to_list(processed_question)
+        match = QuestionAnalysis.compare_keyword_to_list(processed_question, self.keyword_list)
         if match != None:
             print("finished question thread at stage 2")
             self.address = match
@@ -73,8 +73,7 @@ class QuestionAnalysis(threading.Thread):
         return ast.literal_eval(FileProcessor.read_file('./key_words/keywords.jenk'))
 
     @staticmethod
-    def compare_keyword_to_list(q_arr):
-        keyword_list = QuestionAnalysis.get_question_keywords()
+    def compare_keyword_to_list(q_arr, keyword_list):
         for word in q_arr:
             for key in keyword_list.keys():
                 if SequenceMatcher(None, word, key).ratio() > 0.8:

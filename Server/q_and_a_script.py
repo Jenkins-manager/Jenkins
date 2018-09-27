@@ -91,7 +91,6 @@ while True:
         address_pair = q_and_a_creation(q_body, a_body)
         write_keyword_data(keywords, address_pair[0])
         add_to_training_set(address_pair[0], address_pair[1])
-        # raise "testing error"
         print("saved sucessfully")
         break
 
