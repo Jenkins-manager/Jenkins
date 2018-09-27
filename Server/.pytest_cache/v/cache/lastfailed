@@ -1,5 +1,4 @@
 {
-  "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_can_load_value_set": true, 
   "tests/machine_learning_tests/test_machine_learn.py::TestClass::()::test_get_output": true, 
   "tests/test_answer_processor.py::TestClass::()::test_getName": true
 }
