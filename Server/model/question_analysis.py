@@ -48,7 +48,7 @@ class QuestionAnalysis(threading.Thread):
         print("finished question thread with no result, picking random response...")
 
         # third stage
-        return QuestionAnalysis.get_funny_response()
+        return None
 
 
     @staticmethod
@@ -100,7 +100,7 @@ class QuestionAnalysis(threading.Thread):
                 return keyword_list[matches[0]]
     @staticmethod
     def get_funny_response():
-        return random.choice(FileProcessor.read_file('./key_words/responses.jenk'))
+        return random.choice(FileProcessor.read_file('./key_words/responses.jenk').split('|'))
 
     @staticmethod
     def process_user_question(question):

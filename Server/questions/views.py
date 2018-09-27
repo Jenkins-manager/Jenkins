@@ -28,6 +28,8 @@ def send_question(request):
     try:
         answer_string = RequestProcessor.process_request(request_data[1], Answer)
         print(answer_string)
-        return JsonResponse({'answer': answer_string})
     except Exception, e:
-        return Response(status=500, data='Empty Question')
+        answer_string = RequestProcessor.get_funny_response()
+        print(answer_string)
+    finally:
+        return JsonResponse({'answer': answer_string})

@@ -10,6 +10,10 @@ from question_analysis import QuestionAnalysis
 class RequestProcessor:
 
     @staticmethod
+    def get_funny_response():
+        return QuestionAnalysis.get_funny_response()
+
+    @staticmethod
     def get_questions(serializer, question_class):
         questions = question_class.objects.all()
         return serializer(questions, many=True)
