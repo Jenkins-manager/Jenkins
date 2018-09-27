@@ -39,6 +39,9 @@ class RequestProcessor:
     def get_answer(answer_address, answer_class):
         try:
             answer = answer_class.objects.get(address = answer_address)
-            return eval(answer.body)
+            try:
+                return eval(answer.body)
+            except Exception, e:
+                return answer.body
         except Exception, e:
             raise e
