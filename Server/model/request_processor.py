@@ -2,12 +2,14 @@
     Request Processing class: processes Http request data
     and fetches results from machine-learn
 """
-from time import gmtime, strftime
+from question_analysis import QuestionAnalysis
 from .answer_processor import AnswerProcessor
 from .machine_learning.machine_learn import MachineLearn
-from question_analysis import QuestionAnalysis
 
 class RequestProcessor:
+
+    def __init__(self):
+        pass
 
     @staticmethod
     def get_funny_response():
@@ -19,13 +21,13 @@ class RequestProcessor:
         return serializer(questions, many=True)
 
     @staticmethod
-    def check_request(request, question_class):
-        if request['body'] == '' :
+    def check_request(request):
+        if request['body'] == '':
             return False
         else:
             try:
-                question_address = QuestionAnalysis.process_user_question(request['body'])  
-                print(question_address)       
+                question_address = QuestionAnalysis.process_user_question(request['body'])
+                print(question_address)
                 if question_address != None:
                     return True, question_address
                 else:
@@ -43,7 +45,7 @@ class RequestProcessor:
     @staticmethod
     def get_answer(answer_address, answer_class):
         try:
-            answer = answer_class.objects.get(address = answer_address)
+            answer = answer_class.objects.get(address=answer_address)
             try:
                 return eval(answer.body)
             except Exception, e:

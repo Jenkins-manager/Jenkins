@@ -9,6 +9,9 @@ import requests
 
 class AnswerProcessor:
 
+    def __init__(self):
+        pass
+
     @staticmethod
     def getTime():
         return "The time is: " + strftime("%H:%M:%S", gmtime())

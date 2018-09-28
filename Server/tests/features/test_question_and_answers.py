@@ -23,7 +23,7 @@ class TestClass(object):
 
     def test_answer(self):
         assert RequestProcessor.get_answer(4, Answer) == ("The time is: " +
-                                                           strftime("%H:%M:%S", gmtime()))
+                                                          strftime("%H:%M:%S", gmtime()))
 
     # full cycle tests
 

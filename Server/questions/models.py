@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models
 from datetime import datetime
 
-# Create your models here.
+from django.db import models
+
 class Question(models.Model):
     id = models.AutoField(primary_key=True, null=False, unique=True)
     body = models.CharField(max_length=250, null=False)

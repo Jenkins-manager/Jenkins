@@ -34,7 +34,7 @@
   "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_no_input", 
   "tests/test_request_processor.py::TestClass::()::test_check_request_throws_with_invalid_question", 
   "tests/test_request_processor.py::TestClass::()::test_get_answer", 
-  "tests/test_request_processor.py::TestClass::()::test_process_request_bad_question_address", 
+  "tests/test_request_processor.py::TestClass::()::test_process_request_bad_q_address", 
   "tests/test_request_processor.py::TestClass::()::test_get_answer_invalid_answer", 
   "tests/features/test_question_and_answers.py::TestClass::()::test_question_can_be_received", 
   "tests/features/test_question_and_answers.py::TestClass::()::test_answer", 

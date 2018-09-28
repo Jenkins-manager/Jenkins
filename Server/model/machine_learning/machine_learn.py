@@ -1,17 +1,13 @@
 """
     Machine Learning class
 """
-import numpy
 import threading
 import tensorflow as tf
-from tensorflow import keras
 
 from model.machine_learning.training_model import TrainingModel
 from model.file_processor import FileProcessor
-# import matplotlib.pyplot as plt
 
 tf.enable_eager_execution()
-
 
 class MachineLearn(threading.Thread):
 
@@ -36,11 +32,11 @@ class MachineLearn(threading.Thread):
         return tf.reduce_mean(tf.square(predicted_y - desired_y))
 
     def train(self, model, inputs, outputs, learning_rate):
-        with tf.GradientTape() as t:
+        with tf.GradientTape() as t_grad:
             current_loss = self.loss(model(inputs), outputs)
 
-        dQ = t.gradient(current_loss, model.Q)
-        model.Q.assign_sub(learning_rate * dQ)
+        d_q = t_grad.gradient(current_loss, model.Q)
+        model.Q.assign_sub(learning_rate * d_q)
 
     def train_network(self):
         index = self.value_set.index(self.question)
@@ -50,16 +46,16 @@ class MachineLearn(threading.Thread):
         num_examples = 10000
         num_epochs = 70
         inputs = tf.random_normal(shape=[num_examples])
-        Qs = []
+        q_s = []
         epochs = range(num_epochs)
         for epoch in epochs:
-            Qs.append(model.Q.numpy())
+            q_s.append(model.Q.numpy())
             current_loss = self.loss(model.Q, desired_list)
             self.train(model, inputs, desired_list, 0.1)
-            with tf.GradientTape() as t:
+            with tf.GradientTape() as t_grad:
                 current_loss = self.loss(model(inputs), desired_list)
-                dQ = t.gradient(current_loss, model.Q)
-                model.Q.assign_sub(0.1 * dQ)
-            if(epoch == num_epochs - 1):
+                d_q = t_grad.gradient(current_loss, model.Q)
+                model.Q.assign_sub(0.1 * d_q)
+            if epoch == num_epochs - 1:
                 self.answer = int(round(model.Q.numpy().tolist()[index]))
                 return self.answer

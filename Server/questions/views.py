@@ -5,8 +5,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import json
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
@@ -24,7 +22,7 @@ def get_questions(_):
 
 @api_view(['POST', 'GET'])
 def send_question(request):
-    request_data = RequestProcessor.check_request(request.data, Question)
+    request_data = RequestProcessor.check_request(request.data)
     try:
         answer_string = RequestProcessor.process_request(request_data[1], Answer)
     except Exception, e:

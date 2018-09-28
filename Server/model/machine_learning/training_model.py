@@ -3,14 +3,14 @@
 """
 import tensorflow as tf
 
-tfe = tf.contrib.eager
+tf_e = tf.contrib.eager
 
 
 class TrainingModel(object):
 
     def __init__(self, questions):
         self.questions = questions
-        self.Q = tfe.Variable(questions)
+        self.Q = tf_e.Variable(questions)
 
     def __call__(self, inputs):
         return self.Q

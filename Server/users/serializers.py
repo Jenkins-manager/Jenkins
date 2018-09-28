@@ -9,7 +9,7 @@ class UserSerializer(ModelSerializer):
 
     def __init__(self):
         pass
-        
+
     class Meta:
         model = User
         fields = '__all__'

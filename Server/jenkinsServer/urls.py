@@ -25,7 +25,7 @@ from jenkinsServer import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('home/',index),
+    url('home/', index),
     url('get_questions/', get_questions),
     url('send_question/', send_question),
     url('get_answer/', get_answer),

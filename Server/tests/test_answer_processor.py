@@ -1,7 +1,7 @@
 """
     answer processor testing file
 """
-import pytest
+
 from ..model.answer_processor import AnswerProcessor
 from time import gmtime, strftime
 

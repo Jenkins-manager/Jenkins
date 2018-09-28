@@ -1,5 +1,5 @@
 """
-    Question analysis class: breaks down user questions and 
+    Question analysis class: breaks down user questions and
     selects appropriate database item
 """
 
@@ -24,14 +24,15 @@ class QuestionAnalysis(threading.Thread):
         print("starting single keywords question thread")
 
         # preparation stage
-        processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
+        split_question = QuestionAnalysis.question_destroy(self.question)
+        processed_question = QuestionAnalysis.remove_non_keywords(split_question)
         # initial match
         match = QuestionAnalysis.match_keyword_to_address(processed_question)
         if match != None:
             print("finished question thread at stage 1")
             self.address = match
             return match
-        
+
         # second stage
         match = QuestionAnalysis.compare_keyword_to_list(processed_question)
         if match != None:
@@ -52,7 +53,7 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def question_destroy(question):
         q_arr = question.split()
-        return map(lambda w: w.lower(), list(filter(lambda w : len(w) > 2, q_arr)))
+        return map(lambda w: w.lower(), list(filter(lambda w: len(w) > 2, q_arr)))
 
     @staticmethod
     def non_keywords_list():
@@ -66,7 +67,7 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def match_keyword_to_address(q_arr):
         keyword_list = QuestionAnalysis.get_question_keywords()
-        matched_word =  list(filter(lambda w: w in keyword_list.keys(), q_arr ))
+        matched_word = list(filter(lambda w: w in keyword_list.keys(), q_arr))
         return None if matched_word == [] else keyword_list[matched_word[0]]
 
     @staticmethod
@@ -86,7 +87,7 @@ class QuestionAnalysis(threading.Thread):
         keywords[word] = address
         FileProcessor.write_file('./key_words/keywords.jenk', str(keywords), 'w')
         return keywords
-    
+
     @staticmethod
     def find_synonym(q_arr):
         keyword_list = QuestionAnalysis.get_question_keywords()
@@ -101,12 +102,12 @@ class QuestionAnalysis(threading.Thread):
         return random.choice(FileProcessor.read_file('./key_words/responses.jenk').split('|'))
 
     @staticmethod
-    def remove_non_letters_from_question(question):
+    def strip_question(question):
         return re.sub('[^a-z|A-Z|\s]', '', question)
 
     @staticmethod
     def process_user_question(question):
-        question = QuestionAnalysis.remove_non_letters_from_question(question)
+        question = QuestionAnalysis.strip_question(question)
         thread = QuestionAnalysis(question)
         scanning_thread = QuestionAnalysis.ScanningClass(question)
         scanning_thread.start()
@@ -117,13 +118,13 @@ class QuestionAnalysis(threading.Thread):
             return scanning_thread.scanned_answer
         thread.join()
         return thread.address
-        
+
     class ScanningClass(threading.Thread):
         def __init__(self, question):
             threading.Thread.__init__(self)
             self.question = question
             self.scanned_answer = None
-        
+
         def run(self):
             print("starting scanning thread")
             self.scanned_answer = QuestionAnalysis.ScanningClass.scan_for_keywords(self.question)
@@ -137,4 +138,4 @@ class QuestionAnalysis(threading.Thread):
             # stage 1 match whole k/w vs q
             f_list = filter(lambda s: s in question, keyword_list)
             if len(f_list) > 0:
-                return keyword_list[max(f_list, key = len)]
+                return keyword_list[max(f_list, key=len)]
