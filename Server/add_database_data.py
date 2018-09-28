@@ -1,3 +1,7 @@
+"""
+    database setup script
+"""
+
 import ast
 import logging
 logging.basicConfig()
@@ -11,11 +15,11 @@ from users.models import User
 from model.file_processor import FileProcessor
 
 def set_questions():
-    q_arr =  FileProcessor.read_file('db/question_list.jenk').split('|')
+    q_arr = FileProcessor.read_file('db/question_list.jenk').split('|')
     return map(lambda w: ast.literal_eval(w), q_arr)
 
 def set_answers():
-    a_arr =  FileProcessor.read_file('db/answer_list.jenk').split('|')
+    a_arr = FileProcessor.read_file('db/answer_list.jenk').split('|')
     return map(lambda w: ast.literal_eval(w), a_arr)
 
 def set_usernames():
@@ -23,27 +27,27 @@ def set_usernames():
 
 def add_usernames():
     for i in range(len(set_usernames())):
-        u1 = User(
+        u_1 = User(
             username=set_usernames()[i]['username']
             )
-        u1.save()
+        u_1.save()
 
 def add_questions():
     for i in range(len(set_questions())):
-        q1 = Question(
+        q_1 = Question(
             body=set_questions()[i]['body'],
             address=set_questions()[i]['address']
             )
-        q1.save()
+        q_1.save()
 
 
 def add_answers():
     for i in range(len(set_answers())):
-        a1 = Answer(
+        a_1 = Answer(
             body=set_answers()[i]['body'],
             address=set_answers()[i]['address']
             )
-        a1.save()
+        a_1.save()
 
 def add_data():
     logger = logging.getLogger('databaselogger')
