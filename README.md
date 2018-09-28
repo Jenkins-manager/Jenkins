@@ -32,15 +32,16 @@ sudo pip install -r requirements.txt
 ```
 python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.3.0-py3-none-any.whl
 ```
-* This adds the settings to your path
-```
-export DJANGO_SETTINGS_MODULE=jenkinsServer.settings
-```
-* to start server
 
 ```
 cd Server
 ```
+
+* This adds the settings to your path
+```
+export DJANGO_SETTINGS_MODULE=jenkinsServer.settings
+```
+* To start the server
 
 ```
 python manage.py runserver
