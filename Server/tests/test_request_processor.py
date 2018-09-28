@@ -28,7 +28,7 @@ class TestClass(object):
         assert RequestProcessor.check_request({'body': 'fake question'}, Question) == False
 
     def test_get_answer(self):
-        assert RequestProcessor.get_answer(1, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
+        assert RequestProcessor.get_answer(4, Answer) == "The time is: " + strftime("%H:%M:%S", gmtime())
 
     # exception throwing tests
 

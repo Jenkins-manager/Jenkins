@@ -21,8 +21,8 @@ class TestClass(object):
         assert  TestClass.machine_learn.desired_list == TestClass.desired_set 
 
     def test_train_network(self):
-        assert TestClass.machine_learn.train_network() == 3
+        assert TestClass.machine_learn.train_network() == 2
 
     def test_thread_start(self):
         TestClass.machine_learn.start()
-        assert TestClass.machine_learn.answer == 3
+        assert TestClass.machine_learn.answer == 2

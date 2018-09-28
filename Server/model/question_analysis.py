@@ -51,8 +51,6 @@ class QuestionAnalysis(threading.Thread):
         # third stage
         return None
 
-    
-
     @staticmethod
     def question_destroy(question):
         q_arr = question.split()
@@ -70,7 +68,6 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def match_keyword_to_address(q_arr):
         keyword_list = QuestionAnalysis.get_question_keywords()
-        keyword_list = filter(lambda s: len(s.split(" ")) < 2, keyword_list)
         matched_word =  list(filter(lambda w: w in keyword_list.keys(), q_arr ))
         return None if matched_word == [] else keyword_list[matched_word[0]]
 
@@ -81,7 +78,6 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def compare_keyword_to_list(q_arr):
         keyword_list = QuestionAnalysis.get_question_keywords()
-        keyword_list = filter(lambda s: len(s.split(" ")) < 2, keyword_list)
         for word in q_arr:
             for key in keyword_list.keys():
                 if SequenceMatcher(None, word, key).ratio() > 0.8:
@@ -122,8 +118,6 @@ class QuestionAnalysis(threading.Thread):
         thread.start()
         thread.join()
         scanning_thread.join()
-        print(scanning_thread.scanned_answer)
-        return scanning_thread.scanned_answer
         return scanning_thread.scanned_answer if not None else thread.address
         
     class ScanningClass(threading.Thread):
@@ -140,6 +134,7 @@ class QuestionAnalysis(threading.Thread):
         def scan_for_keywords(question):
             # prep stage: filter out non two work k/w
             keyword_list = QuestionAnalysis.get_question_keywords()
+
             # stage 1 match whole k/w vs q
             f_list = filter(lambda s: s in question, keyword_list)
             if len(f_list) > 0:

@@ -7,7 +7,7 @@ from ..model.question_analysis import QuestionAnalysis
 class TestClass(object):
 
     def test_remove_non_letters_from_question(self):
-        assert QuestionAnalysis.remove_non_letters_from_question('123hello Wold%$^Mate') == 'hello World Mate'
+        assert QuestionAnalysis.remove_non_letters_from_question('123hello World%$^ Mate') == 'hello World Mate'
 
     def test_question_destroy_can_break_question_into_words(self):
         assert QuestionAnalysis.question_destroy('what is your name') == ['what', 'your', 'name']
