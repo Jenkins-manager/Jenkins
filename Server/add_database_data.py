@@ -44,15 +44,15 @@ def add_answers():
 
 def add_data():
     logger = logging.getLogger('databaselogger')
-    try:
-        if len(Question.objects.all()) != 0 or len(Answer.objects.all()) != 0:
-            logger.warning('non empty database, clearing data...')
-            Question.objects.all().delete()
-            Answer.objects.all().delete()
-        add_questions()
-        add_answers()
-    except Exception, e:
-        print(str(e))
+    # try:
+    if len(Question.objects.all()) != 0 or len(Answer.objects.all()) != 0:
+        logger.warning('non empty database, clearing data...')
+        Question.objects.all().delete()
+        Answer.objects.all().delete()
+    add_questions()
+    add_answers()
+    # except Exception, e:
+    #     raise e
 
 
 add_data()
