@@ -9,6 +9,8 @@ before_script:
   - pip install -r requirements.txt
 
 script:
+  - python manage.py makemigrations
+  - python manage.py migrate
   - cd Server
   - export DJANGO_SETTINGS_MODULE=jenkinsServer.settings
   - python -m pytest tests
