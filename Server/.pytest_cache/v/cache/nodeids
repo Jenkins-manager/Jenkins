@@ -10,6 +10,7 @@
   "tests/test_file_processor.py::TestClass::()::test_write_file_writes_test_file", 
   "tests/test_file_processor.py::TestClass::()::test_write_file_appends_text", 
   "tests/test_file_processor.py::TestClass::()::test_write_file_throws_with_invlaid_Action", 
+  "tests/test_question_analysis.py::TestClass::()::test_remove_non_letters_from_question", 
   "tests/test_question_analysis.py::TestClass::()::test_question_destroy_can_break_question_into_words", 
   "tests/test_question_analysis.py::TestClass::()::test_question_destroy_makes_all_lowercase", 
   "tests/test_question_analysis.py::TestClass::()::test_question_destroy_with_no_question", 

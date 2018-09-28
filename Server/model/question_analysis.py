@@ -107,7 +107,12 @@ class QuestionAnalysis(threading.Thread):
         return random.choice(FileProcessor.read_file('./key_words/responses.jenk').split('|'))
 
     @staticmethod
+    def remove_non_letters_from_question(question):
+        return re.sub('[^a-z|A-Z|\s]', '', question)
+
+    @staticmethod
     def process_user_question(question):
+        question = QuestionAnalysis.remove_non_letters_from_question(question)
         thread = QuestionAnalysis(question)
         scanning_thread = QuestionAnalysis.ScanningClass(question)
         scanning_thread.start()
