@@ -3,13 +3,13 @@ language: python
 python:
   - "2.7"
   - "3.6"
-# command to install dependencies
-script:
-  - pip install -r requirements.txt
-  - cd Server
+
+before_script:
   - psql -c 'create database jenkinsDev;' -U postgres
+  - pip install -r requirements.txt
+
+script:
+  - cd Server
   - export DJANGO_SETTINGS_MODULE=jenkinsServer.settings
-  # - python add_database_data.py
   - python -m pytest tests
-  - cd ..
   # - pylint Server
