@@ -1,4 +1,5 @@
 {
+  "tests/features/test_question_and_answers.py::TestClass::()::test_ask_question_get_stored_answer": true, 
   "tests/test_answer_processor.py::TestClass::()::test_getName": true, 
   "tests/test_question_analysis.py::TestClass::()::test_get_question_keywords_contains_starting_words": true
 }
