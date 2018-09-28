@@ -130,6 +130,7 @@ class QuestionAnalysis(threading.Thread):
 
         @staticmethod
         def scan_for_keywords(question):
+            question = question.lower()
             # prep stage: filter out non two work k/w
             keyword_list = QuestionAnalysis.get_question_keywords()
 
