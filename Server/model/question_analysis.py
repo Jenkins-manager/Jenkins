@@ -45,10 +45,8 @@ class QuestionAnalysis(threading.Thread):
             print("finished question thread at stage 3")
             self.address = match
             return match
-        
-        print("finished question thread with no result, picking random response...")
 
-        # third stage
+        print("finished question thread with no result, picking random response...")
         return None
 
     @staticmethod
@@ -112,13 +110,13 @@ class QuestionAnalysis(threading.Thread):
         thread = QuestionAnalysis(question)
         scanning_thread = QuestionAnalysis.ScanningClass(question)
         scanning_thread.start()
+        thread.start()
+        scanning_thread.join()
         if scanning_thread.scanned_answer != None:
             print("scanning thread complete")
             return scanning_thread.scanned_answer
-        thread.start()
         thread.join()
-        scanning_thread.join()
-        return scanning_thread.scanned_answer if not None else thread.address
+        return thread.address
         
     class ScanningClass(threading.Thread):
         def __init__(self, question):
@@ -139,10 +137,3 @@ class QuestionAnalysis(threading.Thread):
             f_list = filter(lambda s: s in question, keyword_list)
             if len(f_list) > 0:
                 return keyword_list[max(f_list, key = len)]
-            
-            #stage 2 match part k/w vs part q
-            q_arr = question.split(" ")
-            keyword_list = filter(lambda s: len(s.split(" ")) > 1, keyword_list)
-           
-                
-            print(keyword_list)
