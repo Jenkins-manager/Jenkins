@@ -6,6 +6,7 @@
 import ast
 import threading
 import random
+import re
 
 from difflib import SequenceMatcher
 from thesaurus import Word
@@ -20,13 +21,10 @@ class QuestionAnalysis(threading.Thread):
         self.address = None
 
     def run(self):
-        print("starting question thread")
-
-        # print self.scanning_thread.scanned_answer
+        print("starting single keywords question thread")
 
         # preparation stage
         processed_question = QuestionAnalysis.remove_non_keywords(QuestionAnalysis.question_destroy(self.question))
-        
         # initial match
         match = QuestionAnalysis.match_keyword_to_address(processed_question)
         if match != None:
@@ -72,6 +70,7 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def match_keyword_to_address(q_arr):
         keyword_list = QuestionAnalysis.get_question_keywords()
+        keyword_list = filter(lambda s: len(s.split(" ")) < 2, keyword_list)
         matched_word =  list(filter(lambda w: w in keyword_list.keys(), q_arr ))
         return None if matched_word == [] else keyword_list[matched_word[0]]
 
@@ -82,6 +81,7 @@ class QuestionAnalysis(threading.Thread):
     @staticmethod
     def compare_keyword_to_list(q_arr):
         keyword_list = QuestionAnalysis.get_question_keywords()
+        keyword_list = filter(lambda s: len(s.split(" ")) < 2, keyword_list)
         for word in q_arr:
             for key in keyword_list.keys():
                 if SequenceMatcher(None, word, key).ratio() > 0.8:
@@ -111,9 +111,15 @@ class QuestionAnalysis(threading.Thread):
         thread = QuestionAnalysis(question)
         scanning_thread = QuestionAnalysis.ScanningClass(question)
         scanning_thread.start()
+        if scanning_thread.scanned_answer != None:
+            print("scanning thread complete")
+            return scanning_thread.scanned_answer
         thread.start()
         thread.join()
-        return thread.address
+        scanning_thread.join()
+        print(scanning_thread.scanned_answer)
+        return scanning_thread.scanned_answer
+        return scanning_thread.scanned_answer if not None else thread.address
         
     class ScanningClass(threading.Thread):
         def __init__(self, question):
@@ -124,9 +130,19 @@ class QuestionAnalysis(threading.Thread):
         def run(self):
             print("starting scanning thread")
             self.scanned_answer = QuestionAnalysis.ScanningClass.scan_for_keywords(self.question)
-            print(self.scanned_answer)
 
         @staticmethod
         def scan_for_keywords(question):
+            # prep stage: filter out non two work k/w
             keyword_list = QuestionAnalysis.get_question_keywords()
-            return filter(lambda s: s in question, keyword_list)
+            # stage 1 match whole k/w vs q
+            f_list = filter(lambda s: s in question, keyword_list)
+            if len(f_list) > 0:
+                return keyword_list[max(f_list, key = len)]
+            
+            #stage 2 match part k/w vs part q
+            q_arr = question.split(" ")
+            keyword_list = filter(lambda s: len(s.split(" ")) > 1, keyword_list)
+           
+                
+            print(keyword_list)
