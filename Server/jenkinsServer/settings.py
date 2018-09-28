@@ -82,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jenkinsDev',
-        'USER': '', # set this to your postgres username
-        'PASSWORD': '',
+        'USER': 'jackbranch', # set this to your postgres username
+        'PASSWORD': 'qweasd',
         'HOST': 'localhost',
         'PORT': '5432'
     }

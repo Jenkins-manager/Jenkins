@@ -5,6 +5,9 @@ import os
 
 class FileProcessor:
 
+    def __init__(self):
+        pass
+
     @staticmethod
     def make_file_path(file_path):
         current_dir = os.path.dirname(__file__)
@@ -12,10 +15,10 @@ class FileProcessor:
 
     @staticmethod
     def read_file(file_path):
-        file = open(FileProcessor.make_file_path(file_path), 'r')
-        return file.read()
-    
+        save_file = open(FileProcessor.make_file_path(file_path), 'r')
+        return save_file.read()
+
     @staticmethod
     def write_file(file_path, content, mode):
-        file = open(FileProcessor.make_file_path(file_path), mode)
-        file.write(content)
+        save_file = open(FileProcessor.make_file_path(file_path), mode)
+        save_file.write(content)
