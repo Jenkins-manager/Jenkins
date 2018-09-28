@@ -6,6 +6,7 @@ class Answer extends Component {
   render() {
     return(
       <View style={styles.answerBox}>
+          {/* <Text style={styles.answerBox}>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..</Text> */}
           <Text>{this.props.answer}</Text>
       </View>
     );
@@ -20,7 +21,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#ece5dd',
     position: 'relative',
-    left: -120,
-    margin: 2
+    // left: -20,
+    margin: 3,
+    position: 'relative',
+    
   }
 });
