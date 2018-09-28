@@ -8,7 +8,7 @@ django
 django-rest-framework
 
 # tensorflow modules
-# tensorflow
+tensorflow
 matplotlib
 
 # thesaurus
